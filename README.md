@@ -43,6 +43,8 @@ __Note:__ This version uses memory as session store. For production use somethin
  * example: `sOmeCrAzYhAsH894372`
 * `SESSION_KEY` - Application session secret (optional)
  * example: `express.sid` (defaults to `connect.sid`)
+* `MYSQL_URL` - MySQL database url (including auth)
+ * example: `mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700`
 
 #### Run tests:
 * `npm test` or `mocha -R spec`
