@@ -1,8 +1,6 @@
 Express Basic Application
 =========================
 
-__Note:__ This version uses memory as session store. For production use something like [Redis](http://www.redis.io/).
-
 ![express basic application](http://s29.postimg.org/osrdfy24n/preview.png "Express Basic Application")
 
 #### Built with:
@@ -15,9 +13,9 @@ __Note:__ This version uses memory as session store. For production use somethin
  * [envify](http://github.com/hughsk/envify/)
 * [handlebars](http://handlebarsjs.com/)
 * [sass](http://sass-lang.com/)
-* [bootstrap](http://getbootstrap.com/) `*`
-* [fontawesome](http://fortawesome.github.io/Font-Awesome/) `*`
-* [jquery](http://www.jquery.com/) `*`
+* [bootstrap](http://getbootstrap.com/)
+* [fontawesome](http://fortawesome.github.io/Font-Awesome/)
+* [jquery](http://www.jquery.com/)
 
 #### Testing:
 * [mocha](http://visionmedia.github.io/mocha/)
