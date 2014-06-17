@@ -25,7 +25,12 @@ __Note:__ This version uses memory as session store. For production use somethin
 * [sinon](http://sinonjs.org/)
 
 #### Dependencies:
-* install MySQL and create a database (`brew install mysql`)
+* [mongodb](http://www.mongodb.org/)
+* [redis](http://redis.io/)
+
+#### Install dependencies:
+* `brew install redis`
+* `brew install mongodb`
 * `npm install -g mocha`
 * `npm install -g gulp`
 * `npm install`
@@ -43,8 +48,14 @@ __Note:__ This version uses memory as session store. For production use somethin
  * example: `sOmeCrAzYhAsH894372`
 * `SESSION_KEY` - Application session secret (optional)
  * example: `express.sid` (defaults to `connect.sid`)
-* `MYSQL_URL` - MySQL database url (including auth)
- * example: `mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700`
+* `REDIS_URL` - Redis url (including authentication)
+ * example: `redis://user:pass@localhost:6379`
+* `REDIS_DB` - Redis database number (optional)
+ * example: `1`
+* `REDIS_SESSION_PREFIX` - Prefix for redis session entries (optional)
+ * example: `sess:`
+* `MONGO_URL` - MongoDB url (including authentication)
+ * example: `mongodb://user:pass@localhost:27017/mydatabase`
 
 #### Run tests:
 * `npm test` or `mocha -R spec`

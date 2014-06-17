@@ -57,11 +57,28 @@ var config = module.exports = convict({
         }
     },
     database: {
-        mysql: {
+        mongo: {
             url: {
-                doc: 'MySQL database url (including auth)',
-                default: 'mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700',
-                env: 'MYSQL_URL'
+                doc: 'MongoDB url to connect to (including db reference)',
+                default: 'mongodb://localhost/express-passport-app',
+                env: 'MONGO_URL'
+            }
+        },
+        redis: {
+            url: {
+                doc: 'Redis url to connect to (including auth string)',
+                default: 'redis://localhost:6379',
+                env: 'REDIS_URL'
+            },
+            prefix: {
+                doc: 'Redis session prefix (to separate session for different processes)',
+                default: 'sess:',
+                env: 'REDIS_SESSION_PREFIX'
+            },
+            db: {
+                doc: 'Redis database number (0-15)',
+                default: 0,
+                env: 'REDIS_DB'
             }
         }
     }

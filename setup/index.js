@@ -10,7 +10,6 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
-var session = require('express-session');
 
 // configure express
 module.exports.configureExpress = function (options, app, config) {
@@ -28,7 +27,7 @@ module.exports.configureExpress = function (options, app, config) {
     app.use(options.cookieParser());
     app.use(bodyParser());
     app.use(methodOverride());
-    app.use(session({ secret: config.get('server.secret'), key: config.get('session.key') }));
+    app.use(options.session({ secret: config.get('server.secret'), store: options.store, key: config.get('session.key') }));
     app.use(favicon(options.dir + '/client/public/favicon.ico'));
 
     // express dev config
@@ -63,11 +62,28 @@ module.exports.registerHelpers = function (helpers, handlebars) {
     return;
 };
 
-// create a connection to backend store (mysql)
-module.exports.db = function (database, config)  {
-    var connection = database.createConnection(config.get('database.mysql.url'));
-    connection.connect();
-    return connection;
+// create session store
+module.exports.sessions = function (SessionStore, config) {
+    var authObject;
+
+    if (config.get('database.redis.url')) {
+        var parsedUrl = url.parse(config.get('database.redis.url'));
+        authObject = {
+            prefix: config.get('database.redis.prefix'),
+            host: parsedUrl.hostname,
+            port: parsedUrl.port,
+            db: config.get('database.redis.db'),
+            pass: parsedUrl.auth ? parsedUrl.auth.split(":")[1] : null,
+            secret: config.get('server.secret')
+        };
+    }
+
+    return new SessionStore(authObject);
+};
+
+// connect to backend store (db)
+module.exports.db = function (db, config)  {
+    db.connect(config.get('database.mongo.url'));
 };
 
 // bind server to port

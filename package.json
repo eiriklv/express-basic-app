@@ -11,6 +11,7 @@
         "morgan": "~1.1.1",
         "body-parser": "~1.2.2",
         "cookie-parser": "~1.1.0",
+        "connect-redis": "~2.0.0",
         "express-session": "~1.2.1",
         "serve-favicon": "~2.0.0",
         "errorhandler": "~1.0.1",
@@ -22,13 +23,14 @@
         "convict": "~0.4.2",
         "validator": "~3.12.0",
         "superagent": "^0.18.0",
-        "mysql": "~2.3.2"
+        "mongoose": "~3.8.12",
+        "stylus": "~0.46.3"
     },
     "devDependencies": {
         "browserify": "~4.1.6",
         "vinyl-source-stream": "~0.1.1",
         "gulp": "~3.6.2",
-        "gulp-sass": "~0.7.2",
+        "gulp-stylus": "~1.0.2",
         "gulp-notify": "~1.3.1",
         "gulp-nodemon": "~1.0.3",
         "gulp-mocha": "~0.4.1",
@@ -49,5 +51,5 @@
         "test": "node_modules/.bin/mocha -R spec",
         "develop": "sh dev.sh"
     },
-    "author": "Eirik Vullum <eirik.vullum@sol.no>"
+    "author": "Eirik Vullum <eirik@evconsult.no>"
 }

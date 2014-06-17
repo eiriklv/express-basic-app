@@ -1,5 +1,5 @@
-exports = module.exports = function (database, helpers) {
+exports = module.exports = function (models, helpers) {
     return {
-        resource: require('./resource')(database, helpers)
+        resource: require('./resource')(models.Resource, helpers)
     };
 };
