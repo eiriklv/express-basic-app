@@ -1,11 +1,11 @@
 {
-    "name": "solguru",
+    "name": "express-basic-app",
     "main": "app.js",
     "engines": {
         "node": "0.10.x"
     },
     "version": "0.1.0",
-    "description": "SOL Guru Application",
+    "description": "Express Basic Application",
     "dependencies": {
         "express": "~4.4.3",
         "morgan": "~1.1.1",
