@@ -63,3 +63,17 @@ Express Basic Application
 * `gulp`
 * (create a shellscript with the above for convenience if you want)
 * navigate your browser to `http://localhost:3000` (or whatever port you chose for `PORT`)
+
+#### Development shellscript example:
+```sh
+#!/bin/sh
+export PORT=3000 \
+export DEBUG="*" \
+export NODE_ENV="production" \
+export APPSECRET="somecrazyhash" \
+export CLIENT_API_PATH="/api" \
+export SESSION_KEY="express.sid" \
+export MYSQL_URL="mysql://user:pass@localhost/expressbasicapp"
+
+gulp
+```
