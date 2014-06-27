@@ -28,7 +28,7 @@ Express Basic Application
 * [redis](http://redis.io/)
 
 #### Install dependencies:
-* `brew/apt-get install nodejs
+* `brew/apt-get install nodejs`
 * `brew/apt-get install redis`
 * `brew/apt-get install mongodb`
 * `npm install -g mocha`
