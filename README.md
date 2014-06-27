@@ -35,7 +35,7 @@ Express Basic Application
 * `npm install -g gulp`
 * `npm install`
 
-#### Environment variables
+#### Environment variables:
 * `PORT` - Port exposed by this component.
  * example: `3000`
 * `DEBUG` - Debug output (* for all) (optional)
