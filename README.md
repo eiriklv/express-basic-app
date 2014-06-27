@@ -23,12 +23,14 @@ Express Basic Application
 * [sinon](http://sinonjs.org/)
 
 #### Dependencies:
+* [nodejs](http://www.nodejs.org/)
 * [mongodb](http://www.mongodb.org/)
 * [redis](http://redis.io/)
 
 #### Install dependencies:
-* `brew install redis`
-* `brew install mongodb`
+* `brew/apt-get install nodejs
+* `brew/apt-get install redis`
+* `brew/apt-get install mongodb`
 * `npm install -g mocha`
 * `npm install -g gulp`
 * `npm install`
