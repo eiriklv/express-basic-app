@@ -38,6 +38,12 @@ gulp.task('browserify', function () {
             output: 'page2.js',
             extensions: ['.handlebars'],
             destination: './client/public/javascript/'
+        },
+        {
+            input: ['./client/javascript/app.js'],
+            output: 'app.js',
+            extensions: ['.handlebars'],
+            destination: './client/public/javascript/'
         }
     ]);
 });
