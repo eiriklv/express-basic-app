@@ -9,6 +9,9 @@ var ReactAsync = require('react-async');
 var ReactRouter = require('react-router-component');
 var superagent = require('superagent');
 
+// react-bootstrap components
+var Alert = require('react-bootstrap').Alert;
+
 // ReactRouter functionality
 var Pages = ReactRouter.Pages;
 var Page = ReactRouter.Page;
@@ -19,7 +22,10 @@ var Link = ReactRouter.Link;
 var MainPage = React.createClass({
     render: function() {
         return (
-            <div className = "MainPage" >
+            <div className = "MainPage container" >
+                <Alert bsStyle="warning">
+                    <strong>Holy guacamole!</strong> Best check yo self, youre not looking too good.
+                </Alert>
                 <h1>Hello, anonymous!</h1>
                 <p><Link href="/react/users/doe">Login</Link></p>
             </div>
@@ -34,7 +40,7 @@ var UserPage = React.createClass({
 
     // static methods
     statics: {
-        getUserInfo: function(username, cb) {
+        getUserInfo: function (username, cb) {
             superagent.get('http://localhost:3000/api/resource?name=' + username, function (err, res) {
                 cb(err, res ? res.body : null);
             });
@@ -42,14 +48,14 @@ var UserPage = React.createClass({
     },
   
     // the initial state of the component (this.type refers to a static method)
-    getInitialStateAsync: function(cb) {
+    getInitialStateAsync: function (cb) {
         this.type.getUserInfo(this.props.username, cb);
     },
 
     // gets properties/parameters from ReactRouter (/react/users/:username)
-    componentWillReceiveProps: function(nextProps) {
+    componentWillReceiveProps: function (nextProps) {
         if (this.props.username !== nextProps.username) {
-            this.type.getUserInfo(nextProps.username, function(err, info) {
+            this.type.getUserInfo(nextProps.username, function (err, info) {
                 if (err) {
                     throw err;
                 }
@@ -59,7 +65,7 @@ var UserPage = React.createClass({
     },
 
     // render the component
-    render: function() {
+    render: function () {
         var otherUser = this.props.username === 'doe' ? 'ivan' : 'doe';
         return (
             <div className="UserPage">
@@ -75,7 +81,7 @@ var UserPage = React.createClass({
 
 // Page not found component
 var NotFoundHandler = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <p>Page not found</p>
         );
@@ -84,7 +90,7 @@ var NotFoundHandler = React.createClass({
 
 // Application component
 var App = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <Pages className="App" path={this.props.path}>
                 <Page path="/react" handler={MainPage} />
@@ -99,7 +105,7 @@ module.exports = App;
 
 // If the file is processed by the browser, it should mount itself to the DOM
 if (typeof window !== 'undefined') {
-    window.onload = function() {
-        React.renderComponent(App(), document);
+    window.onload = function () {
+        React.renderComponent(App(), document.body);
     }
 }
