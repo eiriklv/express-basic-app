@@ -1,3 +1,6 @@
+body#landing {
+  padding-top: 80px;
+}
 .page-header {
   padding-bottom: 40px;
 }

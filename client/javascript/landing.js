@@ -9,44 +9,31 @@ var config = require('./config');
 // dependencies
 var React = require('react');
 var ReactAsync = require('react-async');
-var superagent = require('superagent');
 
 // custom components
-var Counter = require('./modules/components/counter-component');
 var Head = require('./modules/components/head-component');
-var Header = require('./modules/components/header-component');
-var FilterableProductTable = require('./modules/components/filterable-product-table-component');
 
 // Main page component (this is asyncronous)
-var App = React.createClass({
-    // mixins
+var Landing = React.createClass({
     mixins: [ReactAsync.Mixin],
 
-    // static methods
-    statics: {
-        getAsyncContent: function (callback) {
-            superagent.get('http://localhost:3000/api/resource', function (err, res) {
-                callback(err, res ? res.body : null);
-            });
-        }.bind(this)
-    },
-
-    // the initial state of the component (this.type refers to a static method)
     getInitialStateAsync: function (callback) {
-        //this.type.getAsyncContent(callback); // fetch async content (disabled for now)
         callback(null, this.props); // set the input props as state (equal to 'return this.props' in getInitialState, but async)
     },
 
-    // main rendering function (uses the state of the component, not the props)
     render: function() {
         return (
             <html>
                 <Head title={this.state.title} description={this.state.description}></Head>
-                <body>
-                    <Header user={this.state.user}></Header>
-                    <div className="MainPage container" >
-                        <Counter initialCount={10}></Counter>
-                        <FilterableProductTable products={this.state.products}></FilterableProductTable>
+                <body id="landing">
+                    <div className="container">
+                        <div className="jumbotron text-center">
+                            <h1><span className="fa fa-cloud"></span> {this.state.title}</h1>
+
+                            <p>Welcome!</p>
+
+                            <a href="/reactapp" className="btn btn-success"><span className="fa fa-user"></span> Enter</a>
+                        </div>
                     </div>
                 </body>
             </html>
@@ -54,7 +41,7 @@ var App = React.createClass({
     }
 });
 
-module.exports = App;
+module.exports = Landing;
 
 // If the file is processed by the browser, it should mount itself to the document and 'overtake' the markup from the server without rerendering
 if (typeof window !== 'undefined') {

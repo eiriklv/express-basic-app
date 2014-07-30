@@ -1,8 +1,6 @@
-exports = module.exports = function (services) {
+exports = module.exports = function (services, helpers) {
     return {
-        home: require('./landing')(services),
-        page1: require('./page1')(services),
-        page2: require('./page2')(services),
-        reactapp: require('./reactapp')(services, ['/javascript/reactapp.js'])
+        home: require('./landing')(services, helpers),
+        reactapp: require('./reactapp')(services, helpers)
     };
 };

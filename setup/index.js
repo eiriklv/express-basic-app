@@ -13,11 +13,6 @@ var errorHandler = require('errorhandler');
 
 // configure express
 module.exports.configureExpress = function (options, app, config) {
-    // set view engine and parsers
-    app.set('views', options.dir + '/views');
-    app.set('view engine', 'html');
-    app.engine('.html', options.handlebars.__express);
-
     // json pretty response
     app.set('json spaces', 2);
 
@@ -34,32 +29,6 @@ module.exports.configureExpress = function (options, app, config) {
     if ('development' == config.get('env')) {
        app.use(errorHandler());
     }
-};
-
-// register handlebars partials
-module.exports.registerPartials = function (path, handlebars) {
-    var partials = path;
-    fs.readdirSync(partials).forEach(function (folder) {
-        var extension = folder.split('.')[1];
-        if (extension != undefined) return;
-        fs.readdirSync(partials + folder).forEach(function (file) {
-            var extension = file.split('.')[1];
-            if(extension != 'html') return;
-            var source = fs.readFileSync(partials + folder + '/' + file, "utf8");
-            var partial = folder+'-'+file.split('.')[0];
-            handlebars.registerPartial(partial, source);
-        });
-    });
-};
-
-// register handlebars block helpers
-module.exports.registerHelpers = function (helpers, handlebars) {
-    for (var helper in helpers) {
-        if (helpers.hasOwnProperty(helper)) {
-            handlebars.registerHelper(helper, helpers[helper]);
-        }
-    }
-    return;
 };
 
 // create session store
