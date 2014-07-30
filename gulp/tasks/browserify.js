@@ -40,9 +40,8 @@ gulp.task('browserify', function () {
             destination: './client/public/javascript/'
         },
         {
-            input: ['./client/javascript/app.js'],
-            output: 'app.js',
-            extensions: ['.handlebars'],
+            input: ['./client/javascript/reactapp.js'],
+            output: 'reactapp.js',
             destination: './client/public/javascript/'
         }
     ]);

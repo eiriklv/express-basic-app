@@ -5,7 +5,6 @@
 var React = require('react');
  
 module.exports = React.createClass({
-    // this is the displayname in the react developer tools
     displayName: 'Head',
  
     componentWillReceiveProps: function(nextProps) {

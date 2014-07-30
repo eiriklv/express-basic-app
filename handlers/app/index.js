@@ -3,6 +3,6 @@ exports = module.exports = function (services) {
         home: require('./landing')(services),
         page1: require('./page1')(services),
         page2: require('./page2')(services),
-        react: require('./react')(services)
+        reactapp: require('./reactapp')(services, ['/javascript/reactapp.js'])
     };
 };

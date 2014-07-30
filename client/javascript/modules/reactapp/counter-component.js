@@ -4,13 +4,10 @@
  
 var React = require('react');
 
-// Simple counter component (this is syncronous)
 module.exports = React.createClass({
     displayName: 'Counter',
 
     getInitialState: function() {
-        // naming it initialX clearly indicates that the only purpose
-        // of the passed down prop is to initialize something internally
         return {count: this.props.initialCount};
     },
 
@@ -20,6 +17,6 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        return <div onClick={this.handleClick}>{this.state.count}</div>;
+        return <div className="well" onClick={this.handleClick}>Click me to increment! {this.state.count}</div>;
     }
 });
