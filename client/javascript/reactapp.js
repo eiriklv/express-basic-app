@@ -56,9 +56,9 @@ var App = React.createClass({
 
 module.exports = App;
 
-// If the file is processed by the browser, it should mount itself to the DOM and 'overtake' the markup from the server without rerendering
+// If the file is processed by the browser, it should mount itself to the document and 'overtake' the markup from the server without rerendering
 if (typeof window !== 'undefined') {
-    // enable the react developer tools when developing
+    // enable the react developer tools when developing (loads another 450k into the DOM..)
     if (config.environment == 'development') {
         window.React = require('react');
     }
