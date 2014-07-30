@@ -42,7 +42,7 @@ var App = React.createClass({
         return (
             <html>
                 <Head title={this.state.title} description={this.state.description}></Head>
-                <body>
+                <body id="reactapp">
                     <Header user={this.state.user}></Header>
                     <div className="MainPage container" >
                         <Counter initialCount={10}></Counter>
