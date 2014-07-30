@@ -38,14 +38,13 @@ module.exports = React.createClass({
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul className="nav navbar-nav">
-                            <li><a href="/page1">Page1</a></li>
-                            <li><a href="/page2">Page2</a></li>
+                            <li><a href="/">Landing</a></li>
                             <li className="active"><a href="/reactapp">React Demo App</a></li>
 
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown">{this.state.name} <span className="caret"></span></a>
+                                <a href="#" className="dropdown-toggle" data-toggle="dropdown">Logged in: {this.state.name} <span className="caret"></span></a>
                                 <ul className="dropdown-menu" role="menu">
-                                    <li><a href="#">{this.state.token}</a></li>
+                                    <li><a href="#">Token: {this.state.token}</a></li>
                                 </ul>
                             </li>
 
