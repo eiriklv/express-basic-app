@@ -4,6 +4,8 @@ Express Basic Application
 #### Introduction:
 This project will give you a scaffolding/boilerplate of the [node](http://www.nodejs.org/)/[express](http://www.expressjs.com/) stack. It uses [mongodb](http://www.mongodb.org/) for database models and [redis](http://www.redis.io/) for session storage. Fork at will! :)
 
+##### Edit: This branch introduces a demo application with react as well as the ones with handlebars
+
 ![express basic application](http://s29.postimg.org/osrdfy24n/preview.png "Express Basic Application")
 
 #### Built with:
@@ -14,7 +16,9 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
 * [browserify](http://www.browserify.org/)
  * [hbsfy](http://github.com/epeli/node-hbsfy/)
  * [envify](http://github.com/hughsk/envify/)
+ * [reactify](https://github.com/andreypopp/reactify)
 * [handlebars](http://handlebarsjs.com/)
+* [react](http://facebook.github.io/react/)
 * [sass](http://sass-lang.com/)
 * [bootstrap](http://getbootstrap.com/)
 * [fontawesome](http://fortawesome.github.io/Font-Awesome/)
@@ -78,7 +82,8 @@ export NODE_ENV="production" \
 export APPSECRET="somecrazyhash" \
 export CLIENT_API_PATH="/api" \
 export SESSION_KEY="express.sid" \
-export MYSQL_URL="mysql://user:pass@localhost/expressbasicapp"
+export MONGO_URL="mongodb://localhost/express-basic-app" \
+export REDIS_URL="redis://localhost:6379" \
 
 gulp
 ```
