@@ -12,6 +12,8 @@ exports = module.exports = function () {
 
         // render the react markup to a string
         ReactAsync.renderComponentToStringWithAsyncState(renderedComponent, function (err, markup, data) {
+            if (!markup) return callback('could not render markup');
+
             // add doctype to markup (not possible in jsx - so it needs to be done dirty)
             markup = '<!DOCTYPE html>' + markup;
             callback(err, options.staticPage ? markup : ReactAsync.injectIntoMarkup(markup, data, clientScripts))
