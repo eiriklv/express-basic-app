@@ -12,10 +12,12 @@ var ReactAsync = require('react-async');
 var superagent = require('superagent');
 
 // custom components
-var Counter = require('./modules/components/counter-component');
-var Head = require('./modules/components/head-component');
-var Header = require('./modules/components/header-component');
-var FilterableProductTable = require('./modules/components/filterable-product-table-component');
+var Counter = require('./modules/components/counter');
+var LikeButton = require('./modules/components/like-button');
+var Ticker = require('./modules/components/ticker');
+var Head = require('./modules/components/head');
+var Header = require('./modules/components/header');
+var FilterableProductTable = require('./modules/components/filterable-product-table');
 
 // Main page component (this is asyncronous)
 var App = React.createClass({
@@ -44,8 +46,10 @@ var App = React.createClass({
                 <Head title={this.state.title} description={this.state.description}></Head>
                 <body id="reactapp">
                     <Header user={this.state.user}></Header>
-                    <div className="MainPage container" >
+                    <div className="MainPage container">
                         <Counter initialCount={10}></Counter>
+                        <LikeButton liked={false}></LikeButton>
+                        <Ticker offset={0} interval={1000}></Ticker>
                         <FilterableProductTable products={this.state.products}></FilterableProductTable>
                     </div>
                 </body>

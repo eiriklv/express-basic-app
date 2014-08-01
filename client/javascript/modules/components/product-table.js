@@ -4,8 +4,8 @@
  
 var React = require('react');
 
-var ProductRow = require('./product-row-component');
-var ProductCategoryRow = require('./product-category-row-component');
+var ProductRow = require('./product-row');
+var ProductCategoryRow = require('./product-category-row');
 
 module.exports = React.createClass({
     displayName: 'ProductTable',

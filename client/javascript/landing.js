@@ -11,7 +11,7 @@ var React = require('react');
 var ReactAsync = require('react-async');
 
 // custom components
-var Head = require('./modules/components/head-component');
+var Head = require('./modules/components/head');
 
 // Main page component (this is asyncronous)
 var Landing = React.createClass({

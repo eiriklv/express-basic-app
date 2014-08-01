@@ -4,8 +4,8 @@
  
 var React = require('react');
 
-var SearchBar = require('./search-bar-component');
-var ProductTable = require('./product-table-component');
+var SearchBar = require('./search-bar');
+var ProductTable = require('./product-table');
 
 module.exports = React.createClass({
     displayName: 'FilterableProductTable',
