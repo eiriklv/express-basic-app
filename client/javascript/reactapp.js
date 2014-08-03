@@ -15,6 +15,7 @@ var superagent = require('superagent');
 var Counter = require('./modules/components/counter');
 var LikeButton = require('./modules/components/like-button');
 var Ticker = require('./modules/components/ticker');
+var Time = require('./modules/components/time');
 var Head = require('./modules/components/head');
 var Header = require('./modules/components/header');
 var FilterableProductTable = require('./modules/components/filterable-product-table');
@@ -43,14 +44,15 @@ var App = React.createClass({
     render: function() {
         return (
             <html>
-                <Head title={this.state.title} description={this.state.description}></Head>
+                <Head title={this.state.title} description={this.state.description} />
                 <body id="reactapp">
-                    <Header user={this.state.user}></Header>
+                    <Header user={this.state.user} />
                     <div className="MainPage container">
-                        <Counter initialCount={10}></Counter>
-                        <LikeButton liked={false}></LikeButton>
-                        <Ticker offset={0} interval={1000}></Ticker>
-                        <FilterableProductTable products={this.state.products}></FilterableProductTable>
+                        <Counter initialCount={10} />
+                        <Time />
+                        <LikeButton liked={false} />
+                        <Ticker offset={0} interval={1000} />
+                        <FilterableProductTable products={this.state.products} />
                     </div>
                 </body>
             </html>
