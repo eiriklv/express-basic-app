@@ -29,7 +29,8 @@
     "react-router-component": "~0.18.2",
     "node-jsx": "0.11.0",
     "react-bootstrap": "^0.11.1",
-    "fibers": "~1.0.1"
+    "fibers": "~1.0.1",
+    "marked": "~0.3.2"
   },
   "devDependencies": {
     "browserify": "~4.1.6",

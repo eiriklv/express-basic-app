@@ -5,6 +5,7 @@
 
 // config
 var config = require('./config');
+var api = require('./modules/api')(config);
 
 // dependencies
 var React = require('react');
@@ -12,6 +13,7 @@ var ReactAsync = require('react-async');
 var superagent = require('superagent');
 
 // custom components
+var CommentBox = require('./modules/components/comment-box');
 var Avatar = require('./modules/components/avatar');
 var Counter = require('./modules/components/counter');
 var LikeButton = require('./modules/components/like-button');
@@ -54,6 +56,7 @@ var App = React.createClass({
                         <LikeButton liked={false} />
                         <Ticker offset={0} interval={1000} />
                         <Avatar username="eiriklv" />
+                        <CommentBox api={api} pollInterval={3000} />
                         <FilterableProductTable products={this.state.products} />
                     </div>
                 </body>
