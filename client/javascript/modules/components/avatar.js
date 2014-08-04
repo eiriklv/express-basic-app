@@ -4,13 +4,17 @@
 
 var React = require('react');
 
+// sub-components
+var ProfilePicture = require('./profile-picture');
+var ProfileLink = require('./profile-link');
+
 module.exports = React.createClass({
     displayName: 'Avatar',
 
     render: function () {
         return (
-            <div>
-                <ProfilePic username={this.props.username} />
+            <div className="well">
+                <ProfilePicture username={this.props.username} />
                 <ProfileLink username={this.props.username} />
             </div>
         );

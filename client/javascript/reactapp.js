@@ -12,6 +12,7 @@ var ReactAsync = require('react-async');
 var superagent = require('superagent');
 
 // custom components
+var Avatar = require('./modules/components/avatar');
 var Counter = require('./modules/components/counter');
 var LikeButton = require('./modules/components/like-button');
 var Ticker = require('./modules/components/ticker');
@@ -52,6 +53,7 @@ var App = React.createClass({
                         <Time />
                         <LikeButton liked={false} />
                         <Ticker offset={0} interval={1000} />
+                        <Avatar username="eiriklv" />
                         <FilterableProductTable products={this.state.products} />
                     </div>
                 </body>
