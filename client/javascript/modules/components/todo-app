@@ -1,0 +1,48 @@
+/** @jsx React.DOM */
+
+'use strict';
+
+var React = require('react');
+
+// sub-components
+var TodoList = require('./todo-list');
+var TodoInput = require('./todo-input');
+
+module.exports = React.createClass({
+    displayName: 'TodoApp',
+
+    getInitialState: function() {
+        return {items: [], text: ''};
+    },
+
+    onChange: function (e) {
+        this.setState({text: e.target.value});
+    },
+
+    handleSubmit: function (e) {
+        // you should not be able to input empty todo's
+        if (this.state.text.length < 1) return false;
+
+        e.preventDefault(); // could also use return false
+
+        var nextItems = this.state.items.concat([this.state.text]);
+        var nextText = '';
+
+        this.setState({items: nextItems, text: nextText});
+    },
+
+    render: function() {
+        return (
+            <div>
+                <h3>TODO</h3>
+                <TodoList items={this.state.items} />
+                <TodoInput
+                    handleSubmit={this.handleSubmit}
+                    handleChange={this.onChange}
+                    items={this.state.items.length + 1}
+                    text={this.state.text}
+                />
+            </div>
+        );
+    }
+});

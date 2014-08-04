@@ -13,6 +13,7 @@ var ReactAsync = require('react-async');
 var superagent = require('superagent');
 
 // custom components
+var TodoApp = require('./modules/components/todo-app');
 var CommentBox = require('./modules/components/comment-box');
 var Avatar = require('./modules/components/avatar');
 var Counter = require('./modules/components/counter');
@@ -51,6 +52,7 @@ var App = React.createClass({
                 <body id="reactapp">
                     <Header user={this.state.user} />
                     <div className="MainPage container">
+                        <TodoApp />
                         <Counter initialCount={10} />
                         <Time startTime={this.state.startTime} />
                         <LikeButton liked={false} />
