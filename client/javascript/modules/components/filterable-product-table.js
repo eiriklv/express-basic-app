@@ -4,6 +4,7 @@
  
 var React = require('react');
 
+// sub-components
 var SearchBar = require('./search-bar');
 var ProductTable = require('./product-table');
 

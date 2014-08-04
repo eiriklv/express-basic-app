@@ -4,6 +4,7 @@
  
 var React = require('react');
 
+// sub-components
 var ProductRow = require('./product-row');
 var ProductCategoryRow = require('./product-category-row');
 
