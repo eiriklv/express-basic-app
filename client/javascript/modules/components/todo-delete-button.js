@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <button onClick={this.props.handleDelete} className="btn btn-default"><i className="fa fa-lg fa-check-circle"></i> Delete completed tasks</button>
+            <button onClick={this.props.handleDelete} className="btn btn-default"><i className="fa fa-lg fa-check"></i> Delete completed tasks</button>
         );
     }
 });
