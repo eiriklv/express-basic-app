@@ -58,7 +58,9 @@ var App = React.createClass({
                     </div>
 
                     <div className="MainPage container">
-                        <TodoApp />
+                        <TodoApp type='todo' title='TODO' skin='warning' />
+                        <TodoApp type='focus' title='FOCUS AREAS' skin='success' />
+                        <TodoApp type='goal' title='GOALS' skin='info' />
                         <Counter initialCount={10} />
                         <Time startTime={this.state.startTime} />
                         <LikeButton liked={false} />
