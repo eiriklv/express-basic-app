@@ -8,29 +8,29 @@ module.exports = React.createClass({
     displayName: 'CommentForm',
 
     handleSubmit: function() {
-        var author = this.refs.author.getDOMNode().value.trim();
         var text = this.refs.text.getDOMNode().value.trim();
-        if (!text || !author) {
+        if (!text) {
             return false;
         }
-        // TODO: send request to the server
+
+        // submit to server
         this.props.onCommentSubmit({
-            author: author,
+            author: this.props.user.name,
             text: text
         });
 
         // clear inputs
-        this.refs.author.getDOMNode().value = '';
         this.refs.text.getDOMNode().value = '';
         return false;
     },
 
     render: function () {
         return (
-            <form className="commentForm" onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Your name" ref="author" />
-                <input type="text" placeholder="Say something..." ref="text" />
-                <input type="submit" value="Post" />
+            <form role="form" className="commentForm" onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                    <input type="text" className="form-control" placeholder="Add a comment..." ref="text" />
+                </div>
+                <button type="submit" className="btn btn-default">Submit</button>
             </form>
         );
     }

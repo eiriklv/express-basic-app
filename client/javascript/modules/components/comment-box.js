@@ -31,8 +31,6 @@ module.exports = React.createClass({
     },
 
     postComment: function (comment) {
-        console.log('posting comment');
-
         this.props.api.comments.create(comment, function (err, comment) {
             if (err) {
                 console.error(err.toString());
@@ -63,7 +61,7 @@ module.exports = React.createClass({
 
                 <div className="panel-body">
                     <CommentList comments={this.state.comments} />
-                    <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+                    <CommentForm user={this.props.user} onCommentSubmit={this.handleCommentSubmit} />
                 </div>
 
             </div>
