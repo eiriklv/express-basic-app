@@ -28,7 +28,12 @@ module.exports = React.createClass({
 
         e.preventDefault(); // could also use return false
 
-        var nextItems = this.state.items.concat([{id: this.props.type + '-' + currentIndex, text: this.state.text, complete: false}]);
+        var nextItems = this.state.items.concat([{
+            id: this.props.type + '-' + currentIndex,
+            text: this.state.text,
+            complete: false
+        }]);
+
         var nextText = '';
 
         this.setState({items: nextItems, text: nextText, index: currentIndex + 1});
@@ -62,7 +67,7 @@ module.exports = React.createClass({
         return (
             <div className={'panel panel-' + this.props.skin}>
                 <div className="panel-heading">{this.props.title} ({this.state.items.length} items)</div>
-                <div className="panel-body">
+                <div className="panel-body" style={{backgroundColor: 'whitesmoke'}}>
                     <TodoInput
                         handleSubmit={this.handleSubmit}
                         handleChange={this.onChange}
