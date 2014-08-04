@@ -56,7 +56,7 @@ module.exports = React.createClass({
             <div className="comment-box panel panel-default">
 
                 <div className="panel-heading">
-                    <h3 className="panel-title">Comments</h3>
+                    <h3 className="panel-title">Comments ({this.state.comments.length})</h3>
                 </div>
 
                 <div className="panel-body">

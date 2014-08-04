@@ -10,18 +10,23 @@ var TodoItem = require('./todo-item');
 module.exports = React.createClass({
     displayName: 'TodoItem',
 
-    componentWillMount: function () {
-        console.log(this.props);
-    },
-
-    handleDelete: function (e) {
+    handleComplete: function (e) {
         e.preventDefault();
-        this.props.handleDelete(this.props);
+        this.props.handleComplete(this.props);
     },
 
     render: function () {
+        var itemStyle = {
+            textDecoration: 'line-through'
+        };
+
         return (
-            <li onClick={this.handleDelete}>{this.props.text}</li>
+            <li className="list-group-item">
+                <a className="btn"><i onClick={this.handleComplete} className="fa fa-lg fa-check-circle"></i></a>
+                <span style={this.props.complete ? itemStyle : {}}>
+                    {this.props.text}
+                </span>
+            </li>
         );
     }
 });

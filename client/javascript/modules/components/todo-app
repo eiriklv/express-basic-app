@@ -7,6 +7,7 @@ var React = require('react');
 // sub-components
 var TodoList = require('./todo-list');
 var TodoInput = require('./todo-input');
+var TodoDeleteButton = require('./todo-delete-button');
 
 module.exports = React.createClass({
     displayName: 'TodoApp',
@@ -27,19 +28,30 @@ module.exports = React.createClass({
 
         e.preventDefault(); // could also use return false
 
-        var nextItems = this.state.items.concat([{id: 'todo-' + currentIndex, text: this.state.text}]);
+        var nextItems = this.state.items.concat([{id: 'todo-' + currentIndex, text: this.state.text, complete: false}]);
         var nextText = '';
 
         this.setState({items: nextItems, text: nextText, index: currentIndex + 1});
     },
 
-    handleDelete: function (childProps) {
+    handleDelete: function () {
+        var todoList = this.state.items;
+
+        // remove the completed items
+        for (var i = todoList.length - 1; i >= 0; i--) {
+            if (todoList[i].complete) todoList.splice(i, 1);
+        }
+
+        this.setState({items: todoList});
+    },
+
+    handleComplete: function (childProps) {
         var newList = this.state.items;
 
-        // remove the requested item
+        // set the requested item as complete
         newList.map(function (item, index, list) {
             if (childProps.key == item.id) {
-                list.splice(index, 1);
+                list[index].complete = !list[index].complete;
             }
         });
 
@@ -49,16 +61,22 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className="panel panel-default">
-                <h3>TODO ({this.state.items.length} items)</h3>
+                <div className="panel-heading">TODO ({this.state.items.length} items)</div>
+                <div className="panel-body">
+                    <TodoInput
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.onChange}
+                        handleDelete={this.handleDelete}
+                        items={this.state.items.length + 1}
+                        text={this.state.text}
+                    />
+
+                    <TodoDeleteButton handleDelete={this.handleDelete} />
+                </div>
+
                 <TodoList
                     items={this.state.items}
-                    handleDelete={this.handleDelete}
-                />
-                <TodoInput
-                    handleSubmit={this.handleSubmit}
-                    handleChange={this.onChange}
-                    items={this.state.items.length + 1}
-                    text={this.state.text}
+                    handleComplete={this.handleComplete}
                 />
             </div>
         );

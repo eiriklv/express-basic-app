@@ -14,11 +14,18 @@ module.exports = React.createClass({
         var count = 0;
 
         var createItem = function (item) {
-            return <TodoItem handleDelete={this.props.handleDelete} key={item.id} text={item.text} />
+            return (
+                <TodoItem
+                    handleComplete={this.props.handleComplete}
+                    key={item.id}
+                    text={item.text}
+                    complete={item.complete}
+                />
+            );
         }.bind(this);
 
         return (
-            <ul>
+            <ul className="list-group">
                 {this.props.items.map(createItem)}
             </ul>
         );

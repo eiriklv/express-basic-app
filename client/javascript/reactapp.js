@@ -51,6 +51,12 @@ var App = React.createClass({
                 <Head title={this.state.title} description={this.state.description} />
                 <body id="reactapp">
                     <Header user={this.state.user} />
+                    <div className="container">
+                        <div className="jumbotron text-center">
+                            <h1>React Demo Components</h1>
+                        </div>
+                    </div>
+
                     <div className="MainPage container">
                         <TodoApp />
                         <Counter initialCount={10} />
