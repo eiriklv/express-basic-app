@@ -8,16 +8,25 @@ module.exports = React.createClass({
     displayName: 'LikeButton',
 
     getInitialState: function() {
-        return {liked: false};
+        return {
+            liked: false,
+            disabled: false
+        };
     },
 
     handleClick: function (event) {
+        if (this.state.disabled) return;
+
         var status = !this.state.liked ? 'liked' : 'unliked';
         alertify.success('You tried to ' + status.slice(0, - 1) + ' this');
+        this.setState({disabled: true});
 
         setTimeout(function () {
             alertify.success('You ' + status + ' this!');
-            this.setState({liked: !this.state.liked});
+            this.setState({
+                liked: !this.state.liked,
+                disabled: false
+            });
         }.bind(this), 2000);
     },
 
