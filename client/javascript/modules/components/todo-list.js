@@ -11,10 +11,11 @@ module.exports = React.createClass({
     displayName: 'TodoList',
 
     render: function () {
-        var createItem = function (itemText) {
-            return <TodoItem text={itemText} />
-            return <li>{itemText}</li>;
-        };
+        var count = 0;
+
+        var createItem = function (item) {
+            return <TodoItem handleDelete={this.props.handleDelete} key={item.id} text={item.text} />
+        }.bind(this);
 
         return (
             <ul>
