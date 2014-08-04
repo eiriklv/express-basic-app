@@ -50,7 +50,7 @@ var App = React.createClass({
                     <Header user={this.state.user} />
                     <div className="MainPage container">
                         <Counter initialCount={10} />
-                        <Time />
+                        <Time startTime={this.state.startTime} />
                         <LikeButton liked={false} />
                         <Ticker offset={0} interval={1000} />
                         <Avatar username="eiriklv" />

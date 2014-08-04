@@ -12,7 +12,7 @@ module.exports = React.createClass({
     mixins: [SetIntervalMixin],
 
     getInitialState: function() {
-        return {time: (new Date())};
+        return {time: new Date(this.props.startTime)};
     },
 
     componentDidMount: function() {
