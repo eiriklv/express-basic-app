@@ -53,13 +53,13 @@ module.exports = React.createClass({
 
     render: function () {
         return (
-            <div className="comment-box panel panel-default">
+            <div className='comment-box panel panel-default'>
 
-                <div className="panel-heading">
-                    <h3 className="panel-title">Comments ({this.state.comments.length})</h3>
+                <div className='panel-heading'>
+                    <h3 className='panel-title'>Comments ({this.state.comments.length})</h3>
                 </div>
 
-                <div className="panel-body">
+                <div className='panel-body'>
                     <CommentList comments={this.state.comments} />
                     <CommentForm user={this.props.user} onCommentSubmit={this.handleCommentSubmit} />
                 </div>

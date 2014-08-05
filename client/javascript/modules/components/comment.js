@@ -17,12 +17,12 @@ module.exports = React.createClass({
         }
 
         return (
-            <li className="comment media">
-                <a className="pull-left" href="#">
-                    <img className="media-object" alt="64x64" src="http://placehold.it/64x64" style={imageStyle} />
+            <li className='comment media'>
+                <a className='pull-left' href='#'>
+                    <img className='media-object' alt='64x64' src='http://placehold.it/64x64' style={imageStyle} />
                 </a>
-                <div className="media-body">
-                    <h4 className="media-heading">{this.props.author}</h4>
+                <div className='media-body'>
+                    <h4 className='media-heading'>{this.props.author}</h4>
                     <p>
                         <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
                     </p>

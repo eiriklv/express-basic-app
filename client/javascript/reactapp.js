@@ -58,16 +58,31 @@ var App = React.createClass({
                     </div>
 
                     <div className="MainPage container">
-                        <TodoApp type='todo' title='TODO' skin='warning' />
-                        <TodoApp type='focus' title='FOCUS AREAS' skin='success' />
-                        <TodoApp type='goal' title='GOALS' skin='info' />
+                        <TodoApp
+                            type='todo'
+                            title='TODO'
+                            skin='warning'
+                            placeholder='What do you need to do?'
+                        />
+                        <TodoApp
+                            type='focus'
+                            title='FOCUS AREAS'
+                            skin='success'
+                            placeholder='What do you need to focus on?'
+                        />
+                        <TodoApp
+                            type='goal'
+                            title='GOALS'
+                            skin='info'
+                            placeholder='What are your goals?'
+                        />
                         <Counter initialCount={10} />
                         <Time startTime={this.state.startTime} />
                         <LikeButton liked={false} />
                         <Ticker offset={0} interval={1000} />
                         <Avatar username="eiriklv" />
                         <CommentBox user={this.state.user} api={api} pollInterval={3000} />
-                        <FilterableProductTable products={this.state.products} />
+                        <FilterableProductTable skin='danger' title='Filterable Product Table' products={this.state.products} />
                     </div>
                 </body>
             </html>

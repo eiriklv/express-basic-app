@@ -38,7 +38,7 @@ module.exports = React.createClass({
     render: function () {
         var text = this.state.liked ? 'like' : 'unlike';
         return (
-            <div className="well" onClick={this.handleClick}>
+            <div className='well' onClick={this.handleClick}>
                 You {text} this. Click to toggle.
             </div>
         );

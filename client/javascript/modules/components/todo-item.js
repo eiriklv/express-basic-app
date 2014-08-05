@@ -21,8 +21,8 @@ module.exports = React.createClass({
         };
 
         return (
-            <li className="list-group-item">
-                <a className="btn" onClick={this.handleComplete}><i className="fa fa-lg fa-check-circle"></i></a>
+            <li className='list-group-item'>
+                <a className='btn' onClick={this.handleComplete}><i className='fa fa-lg fa-check-circle'></i></a>
                 <span style={this.props.complete ? itemStyle : {}}>
                     {this.props.text}
                 </span>

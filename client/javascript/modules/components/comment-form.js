@@ -26,11 +26,11 @@ module.exports = React.createClass({
 
     render: function () {
         return (
-            <form role="form" className="commentForm" onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Add a comment..." ref="text" />
+            <form role='form' className='commentForm' onSubmit={this.handleSubmit}>
+                <div className='form-group'>
+                    <input type='text' className='form-control' placeholder='Add a comment...' ref='text' />
                 </div>
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type='submit' className='btn btn-default'>Submit</button>
             </form>
         );
     }

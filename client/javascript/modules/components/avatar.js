@@ -13,7 +13,7 @@ module.exports = React.createClass({
 
     render: function () {
         return (
-            <div className="well">
+            <div className='well'>
                 <ProfilePicture username={this.props.username} />
                 <ProfileLink username={this.props.username} />
             </div>

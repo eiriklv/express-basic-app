@@ -18,22 +18,28 @@ module.exports = React.createClass({
     render: function() {
         return (
             <form>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={this.props.filterText}
-                    ref="filterTextInput"
-                    onChange={this.handleChange}
-                />
-                <p>
+                <div className='form-group'>
                     <input
-                        type="checkbox"
-                        value={this.props.inStockOnly}
-                        ref="inStockOnlyInput"
+                        className='form-control'
+                        type='text'
+                        placeholder='Search...'
+                        value={this.props.filterText}
+                        ref='filterTextInput'
                         onChange={this.handleChange}
                     />
-                    Only show products in stock
-                </p>
+                </div>
+
+                <div className="checkbox">
+                    <label>
+                        <input
+                            type='checkbox'
+                            value={this.props.inStockOnly}
+                            ref='inStockOnlyInput'
+                            onChange={this.handleChange}
+                        />
+                        Only show products in stock
+                    </label>
+                </div>
             </form>
         );
     }

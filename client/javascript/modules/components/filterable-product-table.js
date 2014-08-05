@@ -28,17 +28,23 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="well">
-                <SearchBar
-                    filterText={this.state.filterText}
-                    inStockOnly={this.state.inStockOnly}
-                    onUserInput={this.handleUserInput}
-                />
-                <ProductTable
-                    products={this.props.products}
-                    filterText={this.state.filterText}
-                    inStockOnly={this.state.inStockOnly}
-                />
+            <div className={'panel panel-' + this.props.skin}>
+                <div className='panel-heading'>
+                    {this.props.title}
+                </div>
+
+                <div className='panel-body'>
+                    <SearchBar
+                        filterText={this.state.filterText}
+                        inStockOnly={this.state.inStockOnly}
+                        onUserInput={this.handleUserInput}
+                    />
+                    <ProductTable
+                        products={this.props.products}
+                        filterText={this.state.filterText}
+                        inStockOnly={this.state.inStockOnly}
+                    />
+                </div>
             </div>
         );
     }

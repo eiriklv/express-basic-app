@@ -25,7 +25,7 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="well">
+            <div className='well'>
                 The time is {this.state.time.toTimeString()}
             </div>
         );

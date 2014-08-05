@@ -17,7 +17,7 @@ module.exports = React.createClass({
 
     render: function () {
         return (
-            <div className="well" onClick={this.handleClick}>
+            <div className='well' onClick={this.handleClick}>
                 Click me to increment! {this.state.count}
             </div>
         );

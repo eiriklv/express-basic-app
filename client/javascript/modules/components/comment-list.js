@@ -20,7 +20,7 @@ module.exports = React.createClass({
         });
 
         return (
-            <ul className="comment-list media-list">
+            <ul className='comment-list media-list'>
                 {commentNodes}
             </ul>
         );

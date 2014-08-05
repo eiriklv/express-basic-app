@@ -64,16 +64,22 @@ module.exports = React.createClass({
     },
 
     render: function() {
+        var count = this.state.items.length;
+        var title = this.props.title;
+
         return (
             <div className={'panel panel-' + this.props.skin}>
-                <div className="panel-heading">{this.props.title} ({this.state.items.length} items)</div>
-                <div className="panel-body" style={{backgroundColor: 'whitesmoke'}}>
+                <div className='panel-heading'>
+                    <h3 className='panel-title'>{title} ({count} item{count == 1 ? '' : 's'})</h3>
+                </div>
+                <div className='panel-body' style={{backgroundColor: 'whitesmoke'}}>
                     <TodoInput
                         handleSubmit={this.handleSubmit}
                         handleChange={this.onChange}
                         handleDelete={this.handleDelete}
                         items={this.state.items.length + 1}
                         text={this.state.text}
+                        placeholder={this.props.placeholder}
                     />
 
                     <TodoDeleteButton handleDelete={this.handleDelete} />

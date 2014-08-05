@@ -31,7 +31,7 @@ module.exports = React.createClass({
         }.bind(this));
 
         return (
-            <table>
+            <table className='table table-condensed'>
                 <thead>
                     <tr>
                         <th>Name</th>

@@ -25,7 +25,7 @@ module.exports = React.createClass({
         }.bind(this);
 
         return (
-            <ul className="list-group">
+            <ul className='list-group'>
                 {this.props.items.map(createItem)}
             </ul>
         );

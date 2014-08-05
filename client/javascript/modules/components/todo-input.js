@@ -9,11 +9,11 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="form-group">
+            <div className='form-group'>
                 <form onSubmit={this.props.handleSubmit}>
                     <input
-                        className="form-control"
-                        placeholder="What do you need to do?"
+                        className='form-control'
+                        placeholder={this.props.placeholder}
                         onChange={this.props.handleChange}
                         value={this.props.text}
                     />
