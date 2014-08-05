@@ -76,6 +76,12 @@ var App = React.createClass({
                             skin='info'
                             placeholder='What are your goals?'
                         />
+                        <TodoApp
+                            type='motivation'
+                            title='MOTIVATIONS'
+                            skin='danger'
+                            placeholder='What are your motivations?'
+                        />
                         <Counter initialCount={10} />
                         <Time startTime={this.state.startTime} />
                         <LikeButton liked={false} />
