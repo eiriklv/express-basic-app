@@ -58,6 +58,12 @@ var App = React.createClass({
                     </div>
 
                     <div className="MainPage container">
+
+                        <Counter initialCount={10} />
+                        <Time startTime={this.state.startTime} />
+                        <LikeButton liked={false} />
+                        <Ticker offset={0} interval={1000} />
+                        
                         <TodoApp
                             type='todo'
                             title='TODO'
@@ -82,12 +88,14 @@ var App = React.createClass({
                             skin='danger'
                             placeholder='What are your motivations?'
                         />
-                        <Counter initialCount={10} />
-                        <Time startTime={this.state.startTime} />
-                        <LikeButton liked={false} />
-                        <Ticker offset={0} interval={1000} />
+                        
                         <CommentBox user={this.state.user} api={api} pollInterval={3000} />
-                        <FilterableProductTable skin='danger' title='Filterable Product Table' products={this.state.products} />
+                        
+                        <FilterableProductTable
+                            skin='danger'
+                            title='Filterable Product Table'
+                            products={this.state.products}
+                        />
                     </div>
                 </body>
             </html>
