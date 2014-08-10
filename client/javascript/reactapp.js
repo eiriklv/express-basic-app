@@ -86,7 +86,6 @@ var App = React.createClass({
                         <Time startTime={this.state.startTime} />
                         <LikeButton liked={false} />
                         <Ticker offset={0} interval={1000} />
-                        <Avatar username="eiriklv" />
                         <CommentBox user={this.state.user} api={api} pollInterval={3000} />
                         <FilterableProductTable skin='danger' title='Filterable Product Table' products={this.state.products} />
                     </div>
