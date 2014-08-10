@@ -40,5 +40,8 @@ var handlers = require('./handlers')(services, helpers);
 // initialize routes
 require('./routes')(app, express, middleware, handlers, config);
 
+// express error handling
+setup.handleExpressError(app, helpers);
+
 // run application
 setup.run(server, config);

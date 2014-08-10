@@ -36,6 +36,11 @@ gulp.task('browserify', function () {
             input: ['./client/javascript/landing.js'],
             output: 'landing.js',
             destination: './client/public/javascript/'
+        },
+        {
+            input: ['./client/javascript/404.js'],
+            output: '404.js',
+            destination: './client/public/javascript/'
         }
     ]);
 });
