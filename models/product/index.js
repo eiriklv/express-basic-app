@@ -1,11 +1,11 @@
 exports = module.exports = function (collection, mongoose) {
     var schema = mongoose.Schema({
         category: {
-            type: String, // this is the verified email used to contact the user (must be verified for local signup)
+            type: String,
             required: true
         },
         price: {
-            type: String, // this is the verified email used to contact the user (must be verified for local signup)
+            type: String,
             required: true
         },
         stocked: {
@@ -13,7 +13,7 @@ exports = module.exports = function (collection, mongoose) {
             default: true
         },
         name: {
-            type: String, // need validator for this (password strength - do this on frontend)
+            type: String,
             required: true
         }
     });
