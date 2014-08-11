@@ -23,9 +23,7 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
 * [jquery](http://www.jquery.com/)
 
 #### Testing:
-* [mocha](http://visionmedia.github.io/mocha/)
-* [chai](http://chaijs.com/)
-* [sinon](http://sinonjs.org/)
+* [jest](http://facebook.github.io/jest/)
 
 #### Dependencies:
 * [nodejs](http://www.nodejs.org/)
