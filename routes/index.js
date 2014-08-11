@@ -1,4 +1,6 @@
-exports = module.exports = function (app, express, middleware, handlers, config) {
-    require('./app')(app, express, middleware, handlers.app, '/');
-    require('./api')(app, express, middleware, handlers.api, config.get('client.api.path'));
+var config = require('../config');
+
+exports = module.exports = function (app) {
+    require('./app')(app, '/');
+    require('./api')(app, config.get('client.api.path'));
 };

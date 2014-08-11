@@ -1,8 +1,6 @@
-exports = module.exports = function (comments) {
-    return {
-        get: require('./get')(comments),
-        remove: require('./remove')(comments),
-        edit: require('./edit')(comments),
-        create: require('./create')(comments)
-    };
+exports = module.exports = {
+    get: require('./get'),
+    remove: require('./remove'),
+    edit: require('./edit'),
+    create: require('./create')
 };

@@ -1,7 +1,6 @@
 // dependencies
 var http = require('http');
 var express = require('express');
-var mongoose = require('mongoose');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
@@ -9,39 +8,30 @@ var app = express();
 
 // config and setup helpers
 var helpers = require('./helpers')();
-var config = require('./config');
 var setup = require('./setup');
 
 // database connection
-setup.db(mongoose, config);
+setup.db();
 
 // setup session store
-var sessionStore = setup.sessions(RedisStore, config);
+var sessionStore = setup.sessions(RedisStore);
 
 // configure express
 setup.configureExpress({
-    express: express,
     session: session,
     store: sessionStore,
     cookieParser: cookieParser,
     dir: __dirname
-}, app, config);
+}, app);
 
 // http (wrapper in case you plan to use socket.io at some point)
 var server = http.createServer(app);
 
-// app modules
-var ipc = require('./modules/ipc')(0);
-var models = require('./models')(mongoose);
-var services = require('./services')(models, helpers);
-var middleware = require('./middleware')();
-var handlers = require('./handlers')(services, helpers);
-
 // initialize routes
-require('./routes')(app, express, middleware, handlers, config);
+require('./routes')(app);
 
 // express error handling
-setup.handleExpressError(app, helpers);
+setup.handleExpressError(app);
 
 // run application
-setup.run(server, config);
+setup.run(server);

@@ -3,8 +3,14 @@ var fs = require('fs');
 var url = require('url');
 var colors = require('colors');
 var debug = require('debug')('express-basic-app:setup');
+var mongoose = require('mongoose');
+
+// config
+var config = require('../config');
+var helpers = require('../helpers')();
 
 // express dependencies
+var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
@@ -16,12 +22,12 @@ var nodejsx = require('node-jsx').install();
 var notFoundPage = require('../client/javascript/404');
 
 // configure express
-module.exports.configureExpress = function (options, app, config) {
+module.exports.configureExpress = function (options, app) {
     // json pretty response
     app.set('json spaces', 2);
 
     // express common config
-    app.use(options.express.static(options.dir + '/client/public'));
+    app.use(express.static(options.dir + '/client/public'));
     app.use(morgan('dev'));
     app.use(options.cookieParser());
     app.use(bodyParser());
@@ -36,7 +42,7 @@ module.exports.configureExpress = function (options, app, config) {
 };
 
 // create session store
-module.exports.sessions = function (SessionStore, config) {
+module.exports.sessions = function (SessionStore) {
     var authObject;
 
     if (config.get('database.redis.url')) {
@@ -55,7 +61,7 @@ module.exports.sessions = function (SessionStore, config) {
 };
 
 // handle express errors
-module.exports.handleExpressError = function (app, helpers) {
+module.exports.handleExpressError = function (app) {
     // handle 404 not found
     app.use(function(req, res, next){
         res.status(404);
@@ -97,12 +103,12 @@ module.exports.handleExpressError = function (app, helpers) {
 };
 
 // connect to backend store (db)
-module.exports.db = function (db, config)  {
-    db.connect(config.get('database.mongo.url'));
+module.exports.db = function ()  {
+    mongoose.connect(config.get('database.mongo.url'));
 };
 
 // bind server to port
-module.exports.run = function (server, config) {
+module.exports.run = function (server) {
     server.listen(config.get('server.port'), function () {
         debug('listening on port %d'.green, server.address().port);
     });

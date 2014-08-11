@@ -6,6 +6,8 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
 
 ##### Edit: This branch introduces a demo application with react
 
+##### Edit: This branch uses a different approach for including dependencies (requiring as much as possible individually instead of dependency injection)
+
 ![express basic application](http://s29.postimg.org/osrdfy24n/preview.png "Express Basic Application")
 
 #### Built with:
@@ -23,9 +25,7 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
 * [jquery](http://www.jquery.com/)
 
 #### Testing:
-* [mocha](http://visionmedia.github.io/mocha/)
-* [chai](http://chaijs.com/)
-* [sinon](http://sinonjs.org/)
+* [jest](http://facebook.github.io/jest/)
 
 #### Dependencies:
 * [nodejs](http://www.nodejs.org/)
