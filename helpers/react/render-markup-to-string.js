@@ -5,9 +5,9 @@ var util = require('util');
 exports = module.exports = function () {
     return function (options) {
         var context = options.context || {};
-        var callback = options.callback || function (err) { console.log(err) };
+        var callback = options.callback || function (err) { console.log(err); };
         var clientScripts = options.clientScripts || [];
-        var component = options.component || function () { console.log('no component passed!') };
+        var component = options.component || function () { console.log('no component passed!'); };
 
         // application data (this has the same effect as handlebars context, except for react components)
         var renderedComponent = component(context);
@@ -21,7 +21,7 @@ exports = module.exports = function () {
 
             // add doctype to markup (not possible in jsx - so it needs to be done dirty)
             markup = '<!DOCTYPE html>' + markup;
-            callback(err, options.staticPage ? markup : ReactAsync.injectIntoMarkup(markup, data, clientScripts))
+            callback(err, options.staticPage ? markup : ReactAsync.injectIntoMarkup(markup, data, clientScripts));
         });
     };
 };
