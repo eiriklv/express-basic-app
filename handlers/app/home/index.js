@@ -1,5 +1,5 @@
 var nodejsx = require('node-jsx').install();
-var App = require('../../../client/javascript/reactapp');
+var App = require('../../../client/javascript/home');
 
 exports = module.exports = function (services, helpers) {
     return function (req, res, next) {
@@ -23,7 +23,7 @@ exports = module.exports = function (services, helpers) {
 
         helpers.react.renderMarkupToString({
             component: App,
-            clientScripts: ['/javascript/reactapp.js'],
+            clientScripts: ['/javascript/home.js'],
             context: context,
             staticPage: false,
             callback: function (err, markup) {
