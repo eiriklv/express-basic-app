@@ -32,7 +32,7 @@ var Landing = React.createClass({
 
                             <p>Welcome!</p>
 
-                            <a href="/reactapp" className="btn btn-success"><span className="fa fa-user"></span> Enter</a>
+                            <a href="/home" className="btn btn-success"><span className="fa fa-user"></span> Enter</a>
                         </div>
                     </div>
                 </body>

@@ -39,7 +39,7 @@ module.exports = React.createClass({
 
                         <ul className='nav navbar-nav'>
                             <li><a href='/'>Landing</a></li>
-                            <li className='active'><a href='/reactapp'>React Demo App</a></li>
+                            <li className='active'><a href='/home'>React Demo App</a></li>
 
                             <li className='dropdown'>
                                 <a href='#' className='dropdown-toggle' data-toggle='dropdown'>Logged in: {this.state.name} <span className='caret'></span></a>
