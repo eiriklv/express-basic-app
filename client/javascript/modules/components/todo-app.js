@@ -16,11 +16,11 @@ module.exports = React.createClass({
         return {items: [], index: 0, text: ''};
     },
 
-    onChange: function (e) {
+    onChange: function(e) {
         this.setState({text: e.target.value});
     },
 
-    handleSubmit: function (e) {
+    handleSubmit: function(e) {
         // you should not be able to input empty todo's
         if (this.state.text.length < 1) return false;
 
@@ -39,7 +39,7 @@ module.exports = React.createClass({
         this.setState({items: nextItems, text: nextText, index: currentIndex + 1});
     },
 
-    handleDelete: function () {
+    handleDelete: function() {
         var todoList = this.state.items;
 
         // remove the completed items
@@ -50,11 +50,11 @@ module.exports = React.createClass({
         this.setState({items: todoList});
     },
 
-    handleComplete: function (childProps) {
+    handleComplete: function(childProps) {
         var newList = this.state.items;
 
         // set the requested item as complete
-        newList.map(function (item, index, list) {
+        newList.map(function(item, index, list) {
             if (childProps.key == item.id) {
                 list[index].complete = !list[index].complete;
             }

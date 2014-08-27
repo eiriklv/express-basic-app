@@ -11,14 +11,14 @@ var ProductTable = require('./product-table');
 module.exports = React.createClass({
     displayName: 'FilterableProductTable',
 
-    getInitialState: function () {
+    getInitialState: function() {
         return {
             filterText: '',
             inStockOnly: false
         };
     },
 
-    handleUserInput: function (filterText, inStockOnly) {
+    handleUserInput: function(filterText, inStockOnly) {
         // refresh the state so that the children are re-rendered with new data (new props)
         this.setState({
             filterText: filterText,

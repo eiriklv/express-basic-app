@@ -50,7 +50,7 @@ if (typeof window !== 'undefined') {
         window.React = require('react');
     }
 
-    window.onload = function () {
+    window.onload = function() {
         React.renderComponent(NotFound(), document);
     }
 }

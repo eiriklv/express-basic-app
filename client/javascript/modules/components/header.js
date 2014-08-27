@@ -8,7 +8,7 @@ var ReactAsync = require('react-async');
 module.exports = React.createClass({
     displayName: 'Header',
 
-    getInitialState: function () {
+    getInitialState: function() {
         return this.props.user;
     },
 

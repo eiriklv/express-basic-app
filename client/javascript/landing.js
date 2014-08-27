@@ -17,7 +17,7 @@ var Head = require('./modules/components/head');
 var Landing = React.createClass({
     mixins: [ReactAsync.Mixin],
 
-    getInitialStateAsync: function (callback) {
+    getInitialStateAsync: function(callback) {
         callback(null, this.props); // set the input props as state (equal to 'return this.props' in getInitialState, but async)
     },
 
@@ -50,7 +50,7 @@ if (typeof window !== 'undefined') {
         window.React = require('react');
     }
 
-    window.onload = function () {
+    window.onload = function() {
         React.renderComponent(Landing(), document);
     }
 }

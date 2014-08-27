@@ -10,10 +10,10 @@ var TodoItem = require('./todo-item');
 module.exports = React.createClass({
     displayName: 'TodoList',
 
-    render: function () {
+    render: function() {
         var count = 0;
 
-        var createItem = function (item) {
+        var createItem = function(item) {
             return (
                 <TodoItem
                     handleComplete={this.props.handleComplete}

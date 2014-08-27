@@ -10,12 +10,12 @@ var TodoItem = require('./todo-item');
 module.exports = React.createClass({
     displayName: 'TodoItem',
 
-    handleComplete: function (e) {
+    handleComplete: function(e) {
         e.preventDefault();
         this.props.handleComplete(this.props);
     },
 
-    render: function () {
+    render: function() {
         var itemStyle = {
             textDecoration: 'line-through'
         };

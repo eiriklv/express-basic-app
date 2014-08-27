@@ -8,7 +8,7 @@ var marked = require('marked');
 module.exports = React.createClass({
     displayName: 'Comment',
 
-    render: function () {
+    render: function() {
         var rawMarkup = marked(this.props.children.toString());
 
         var imageStyle = {

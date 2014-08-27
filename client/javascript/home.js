@@ -31,7 +31,7 @@ var App = React.createClass({
 
     // static methods
     statics: {
-        getAsyncContent: function (callback) {
+        getAsyncContent: function(callback) {
             superagent.get('http://localhost:3000/api/resource', function (err, res) {
                 callback(err, res ? res.body : null);
             });
@@ -39,7 +39,7 @@ var App = React.createClass({
     },
 
     // the initial state of the component (this.type refers to a static method)
-    getInitialStateAsync: function (callback) {
+    getInitialStateAsync: function(callback) {
         //this.type.getAsyncContent(callback); // fetch async content (disabled for now)
         callback(null, this.props); // set the input props as state (equal to 'return this.props' in getInitialState, but async)
     },
@@ -112,7 +112,7 @@ if (typeof window !== 'undefined') {
         window.React = require('react');
     }
 
-    window.onload = function () {
+    window.onload = function() {
         React.renderComponent(App(), document);
     }
 }
