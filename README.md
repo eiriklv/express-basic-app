@@ -17,7 +17,7 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
  * [envify](http://github.com/hughsk/envify/)
  * [reactify](https://github.com/andreypopp/reactify)
 * [react](http://facebook.github.io/react/)
-* [stylus](http://sass-lang.com/)
+* [stylus](http://learnboost.github.io/stylus/)
 * [bootstrap](http://getbootstrap.com/)
 * [fontawesome](http://fortawesome.github.io/Font-Awesome/)
 
