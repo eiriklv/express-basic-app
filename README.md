@@ -17,10 +17,9 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
  * [envify](http://github.com/hughsk/envify/)
  * [reactify](https://github.com/andreypopp/reactify)
 * [react](http://facebook.github.io/react/)
-* [sass](http://sass-lang.com/)
+* [stylus](http://sass-lang.com/)
 * [bootstrap](http://getbootstrap.com/)
 * [fontawesome](http://fortawesome.github.io/Font-Awesome/)
-* [jquery](http://www.jquery.com/)
 
 #### Testing:
 * [jest](http://facebook.github.io/jest/)
@@ -61,7 +60,7 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
  * example: `mongodb://user:pass@localhost:27017/mydatabase`
 
 #### Run tests:
-* `npm test` or `mocha -R spec`
+* `npm test`
 
 #### Run the application:
 * set environment variables
