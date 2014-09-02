@@ -25,7 +25,7 @@ var FilterableProductTable = require('./modules/components/filterable-product-ta
 // common components
 var Head = require('./modules/components/head');
 var Header = require('./modules/components/header');
-var ExternalScripts = require('./modules/components/common/external-scripts');
+var ExternalScripts = require('./modules/components/external-scripts');
 
 // Main page component (this is asyncronous)
 var App = React.createClass({
@@ -100,7 +100,7 @@ var App = React.createClass({
                             products={this.state.products}
                         />
                     </div>
-                    
+
                     <ExternalScripts />
                 </body>
             </html>
