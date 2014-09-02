@@ -20,9 +20,12 @@ var Counter = require('./modules/components/counter');
 var LikeButton = require('./modules/components/like-button');
 var Ticker = require('./modules/components/ticker');
 var Time = require('./modules/components/time');
+var FilterableProductTable = require('./modules/components/filterable-product-table');
+
+// common components
 var Head = require('./modules/components/head');
 var Header = require('./modules/components/header');
-var FilterableProductTable = require('./modules/components/filterable-product-table');
+var ExternalScripts = require('./modules/components/common/external-scripts');
 
 // Main page component (this is asyncronous)
 var App = React.createClass({
@@ -97,6 +100,8 @@ var App = React.createClass({
                             products={this.state.products}
                         />
                     </div>
+                    
+                    <ExternalScripts />
                 </body>
             </html>
         );
