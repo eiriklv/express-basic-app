@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
-var hbs = require('hbs');
 var app = express();
 
 // config and setup helpers
@@ -16,17 +15,12 @@ var setup = require('./setup');
 // database connection
 setup.db(mongoose, config);
 
-// handlebars setup
-setup.registerPartials('./views/partials/', hbs);
-setup.registerHelpers(helpers.handlebars, hbs);
-
 // setup session store
-var sessionStore = setup.sessions(RedisStore, config);
+var sessionStore = setup.sessions(RedisStore, express, config);
 
 // configure express
 setup.configureExpress({
     express: express,
-    handlebars: hbs,
     session: session,
     store: sessionStore,
     cookieParser: cookieParser,
@@ -41,10 +35,13 @@ var ipc = require('./modules/ipc')(0);
 var models = require('./models')(mongoose);
 var services = require('./services')(models, helpers);
 var middleware = require('./middleware')();
-var handlers = require('./handlers')(services);
+var handlers = require('./handlers')(services, helpers);
 
 // initialize routes
 require('./routes')(app, express, middleware, handlers, config);
+
+// express error handling
+setup.handleExpressError(app, helpers);
 
 // run application
 setup.run(server, config);

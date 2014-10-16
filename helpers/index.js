@@ -1,6 +1,6 @@
-exports = module.exports = function () {
+exports = module.exports = function() {
     return {
         common: require('./common')(),
-        handlebars: require('./handlebars')()
+        react: require('./react')()
     };
 };
