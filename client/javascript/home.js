@@ -29,6 +29,7 @@ var ExternalScripts = require('./modules/components/external-scripts');
 
 // Main page component (this is asyncronous)
 var App = React.createClass({
+    
     // mixins
     mixins: [ReactAsync.Mixin],
 

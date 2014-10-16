@@ -24,12 +24,15 @@ module.exports.configureExpress = function(options, app, config) {
     app.use(options.express.static(options.dir + '/client/public'));
     app.use(morgan('dev'));
     app.use(options.cookieParser());
-    app.use(bodyParser());
+    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(bodyParser.json())
     app.use(methodOverride());
     app.use(options.session({
         secret: config.get('server.secret'),
         store: options.store,
-        key: config.get('session.key')
+        name: config.get('session.key'),
+        resave: true,
+        saveUninitialized: true
     }));
     app.use(favicon(options.dir + '/client/public/favicon.ico'));
 
@@ -40,10 +43,10 @@ module.exports.configureExpress = function(options, app, config) {
 };
 
 // create session store
-module.exports.sessions = function(SessionStore, config) {
+module.exports.sessions = function (SessionStore, express, config) {
     var authObject;
 
-    if (config.get('database.redis.url')) {
+    if (config.get('env') == 'production') {
         var parsedUrl = url.parse(config.get('database.redis.url'));
         authObject = {
             prefix: config.get('database.redis.prefix'),
@@ -53,9 +56,11 @@ module.exports.sessions = function(SessionStore, config) {
             pass: parsedUrl.auth ? parsedUrl.auth.split(":")[1] : null,
             secret: config.get('server.secret')
         };
-    }
 
-    return new SessionStore(authObject);
+        return new SessionStore(authObject);
+    } else {
+        return express.MemoryStore;
+    }
 };
 
 // handle express errors
@@ -98,7 +103,7 @@ module.exports.handleExpressError = function(app, helpers) {
     // handling other errors
     app.use(function(err, req, res, next) {
         console.error(err.stack);
-        res.send(500, 'Something broke!');
+        res.status(500).send('Something broke!');
     });
 };
 

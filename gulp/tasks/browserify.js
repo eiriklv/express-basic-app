@@ -1,7 +1,12 @@
 var browserify = require('browserify');
+var streamify = require('gulp-streamify');
+var NopStream = require('../util/no-op-stream');
+var uglify = require('gulp-uglify');
 var gulp = require('gulp');
 var handleErrors = require('../util/handle-errors');
 var source = require('vinyl-source-stream');
+
+var production = process.env.NODE_ENV === 'production';
 
 function createSingleBundle(options) {
     browserify({
@@ -9,10 +14,11 @@ function createSingleBundle(options) {
         extensions: options.extensions
     })
         .bundle({
-            debug: true
+            debug: !production
         })
         .on('error', handleErrors)
         .pipe(source(options.output))
+        .pipe(production ? streamify(uglify()) : (new NopStream()))
         .pipe(gulp.dest(options.destination));
 }
 
