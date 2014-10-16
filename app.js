@@ -16,7 +16,7 @@ var setup = require('./setup');
 setup.db(mongoose, config);
 
 // setup session store
-var sessionStore = setup.sessions(RedisStore, express, config);
+var sessionStore = setup.sessions(RedisStore, session, config);
 
 // configure express
 setup.configureExpress({
