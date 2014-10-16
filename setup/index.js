@@ -6,6 +6,7 @@ var debug = require('debug')('express-basic-app:setup');
 
 // express dependencies
 var morgan = require('morgan');
+var compress = require('compression');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
@@ -21,6 +22,7 @@ module.exports.configureExpress = function(options, app, config) {
     app.set('json spaces', 2);
 
     // express common config
+    app.use(compress());
     app.use(options.express.static(options.dir + '/client/public'));
     app.use(morgan('dev'));
     app.use(options.cookieParser());
@@ -59,7 +61,7 @@ module.exports.sessions = function (SessionStore, express, config) {
 
         return new SessionStore(authObject);
     } else {
-        return express.MemoryStore;
+        return (new session.MemoryStore());
     }
 };
 
