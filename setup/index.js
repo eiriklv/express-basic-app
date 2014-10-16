@@ -45,7 +45,7 @@ module.exports.configureExpress = function(options, app, config) {
 };
 
 // create session store
-module.exports.sessions = function (SessionStore, express, config) {
+module.exports.sessions = function (SessionStore, session, config) {
     var authObject;
 
     if (config.get('env') == 'production') {
