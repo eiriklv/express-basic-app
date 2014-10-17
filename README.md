@@ -2,15 +2,14 @@ Express Basic Application
 =========================
 
 #### Introduction:
-This project will give you a scaffolding/boilerplate of the [node](http://www.nodejs.org/)/[express](http://www.expressjs.com/) stack. It uses [mongodb](http://www.mongodb.org/) for database models and [redis](http://www.redis.io/) for session storage. Fork at will! :)
-
-##### Edit: This branch introduces a demo application with react
+This project will give you a scaffolding/boilerplate of the [node](http://www.nodejs.org/)/[express](http://www.expressjs.com/)/[socket.io](http://socket.io/) stack. It uses [mongodb](http://www.mongodb.org/) for database models and [redis](http://www.redis.io/) for session storage. Fork at will! :)
 
 ![express basic application](http://s29.postimg.org/osrdfy24n/preview.png "Express Basic Application")
 
 #### Built with:
 * [node.js](http://www.nodejs.org/)
 * [express](http://www.expressjs.com/)
+* [socket.io](http://www.socket.io/)
 * [gulp](http://www.gulpjs.com/)
 * [convict](http://github.com/mozilla/node-convict/)
 * [browserify](http://www.browserify.org/)
