@@ -16,6 +16,9 @@ var errorHandler = require('errorhandler');
 var nodejsx = require('node-jsx').install();
 var notFoundPage = require('../client/javascript/404');
 
+// socket.io dependecies
+var socketHandshake = require('socket.io-handshake');
+
 // configure express
 module.exports.configureExpress = function(options, app, config) {
     // json pretty response
@@ -50,6 +53,16 @@ module.exports.configureExpress = function(options, app, config) {
     if ('development' == config.get('env')) {
         app.use(errorHandler());
     }
+};
+
+// configure socket.io
+module.exports.configureSockets = function(io, config, options) {
+    io.use(socketHandshake({
+        store: options.sessionStore,
+        key: config.get('session.key'),
+        secret: config.get('server.secret'),
+        parser: options.cookieParser()
+    }));
 };
 
 // create session store

@@ -11,6 +11,8 @@ var api = require('./modules/api')(config);
 var React = require('react');
 var ReactAsync = require('react-async');
 var superagent = require('superagent');
+var io = require('socket.io-client');
+var sockets = require('./modules/sockets/home');
 
 // custom components
 var TodoApp = require('./modules/components/todo-app');
@@ -40,6 +42,11 @@ var App = React.createClass({
                 callback(err, res ? res.body : null);
             });
         }.bind(this)
+    },
+
+    componentDidMount: function() {
+        // intialize socket.io
+        sockets(io);
     },
 
     // the initial state of the component (this.type refers to a static method)

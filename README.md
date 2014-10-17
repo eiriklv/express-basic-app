@@ -72,7 +72,7 @@ This project will give you a scaffolding/boilerplate of the [node](http://www.no
 ```sh
 #!/bin/sh
 export PORT=3000 \
-export DEBUG="*" \
+export DEBUG="*:-engine:polling" \
 export NODE_ENV="production" \
 export APPSECRET="somecrazyhash" \
 export CLIENT_API_PATH="/api" \

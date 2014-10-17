@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
+var socketio = require('socket.io')();
+var socketHandshake = require('socket.io-handshake');
 var app = express();
 
 // config and setup helpers
@@ -27,8 +29,15 @@ setup.configureExpress({
     dir: __dirname
 }, app, config);
 
-// http (wrapper in case you plan to use socket.io at some point)
+// http and socket.io server(s)
 var server = http.createServer(app);
+var io = socketio.attach(server);
+
+// configure socket.io
+setup.configureSockets(io, config, {
+    cookieParser: cookieParser,
+    sessionStore: sessionStore
+});
 
 // app modules
 var ipc = require('./modules/ipc')(0);
@@ -36,6 +45,9 @@ var models = require('./models')(mongoose);
 var services = require('./services')(models, helpers);
 var middleware = require('./middleware')();
 var handlers = require('./handlers')(services, helpers);
+
+// initialize sockets
+require('./modules/sockets')(io, ipc);
 
 // initialize routes
 require('./routes')(app, express, middleware, handlers, config);
