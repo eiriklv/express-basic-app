@@ -130,9 +130,9 @@ module.exports.handleExpressError = function(app, helpers) {
     });
 };
 
-module.exports.db = function(mongoose, config) {
+module.exports.connectToDatabase = function(mongoose, url) {
     function connect() {
-        mongoose.connect(config.get('database.mongo.url'));
+        mongoose.connect(url);
     }
 
     // connection is open and ready

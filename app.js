@@ -14,9 +14,6 @@ var helpers = require('./helpers')();
 var config = require('./config');
 var setup = require('./setup');
 
-// database connection
-setup.db(mongoose, config);
-
 // setup session store
 var sessionStore = setup.sessions(RedisStore, session, config);
 
@@ -54,6 +51,9 @@ require('./routes')(app, express, middleware, handlers, config);
 
 // express error handling
 setup.handleExpressError(app, helpers);
+
+// database connection
+setup.connectToDatabase(mongoose, config.get('database.mongo.url'));
 
 // run application
 setup.run(server, config);
