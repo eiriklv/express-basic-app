@@ -2,12 +2,15 @@
 var fs = require('fs');
 var url = require('url');
 var colors = require('colors');
+var util = require('util');
 var debug = require('debug')('express-basic-app:setup');
 
 // express dependencies
+var express = require('express');
 var morgan = require('morgan');
 var compress = require('compression');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
@@ -20,69 +23,85 @@ var notFoundPage = require('../client/javascript/404');
 var socketHandshake = require('socket.io-handshake');
 
 // configure express
-module.exports.configureExpress = function(options, app, config) {
+module.exports.createExpressApp = function(options) {
+    if (!options.session) throw (new Error('missing session middleware'));
+    if (!options.store) throw (new Error('missing session store'));
+    if (!options.dir) throw (new Error('missing root dir'));
+    if (!options.static) throw (new Error('missing static dir reference'));
+    if (!options.favicon) throw (new Error('missing favicon reference'));
+
+    options.env = options.env || 'development';
+    
+    var app = express();
+
     // json pretty response
     app.set('json spaces', 2);
 
     // express common config
     app.use(compress());
-    app.use(options.express.static(options.dir + '/client/public'));
+    app.use(express.static(options.dir + options.static));
     app.use(morgan('dev'));
-    app.use(options.cookieParser());
-    app.use(bodyParser.urlencoded({ extended: false }))
-    app.use(bodyParser.json())
+    app.use(cookieParser());
+    app.use(bodyParser.urlencoded({
+        extended: false
+    }));
+    app.use(bodyParser.json());
     app.use(methodOverride());
     app.use(options.session({
-        secret: config.get('server.secret'),
+        secret: options.sessionSecret,
         store: options.store,
-        name: config.get('session.key'),
+        name: options.sessionKey,
         resave: true,
         saveUninitialized: true
     }));
-    app.use(favicon(options.dir + '/client/public/favicon.ico'));
 
-    // handle when session store disconnects
+    // handle session store disconnect
     app.use(function(req, res, next) {
         if (!req.session) {
-            return next(new Error('session store not available')) // handle error
+            return next(new Error('session store not available'));
         }
         next();
     });
 
+    app.use(favicon(options.dir + options.favicon));
+
     // express dev config
-    if ('development' == config.get('env')) {
+    if ('development' == options.env) {
         app.use(errorHandler());
     }
+
+    return app;
 };
 
 // configure socket.io
-module.exports.configureSockets = function(io, config, options) {
+module.exports.configureSockets = function(io, options) {
     io.use(socketHandshake({
         store: options.sessionStore,
-        key: config.get('session.key'),
-        secret: config.get('server.secret'),
-        parser: options.cookieParser()
+        key: options.sessionKey,
+        secret: options.sessionSecret,
+        parser: cookieParser()
     }));
 };
 
 // create session store
-module.exports.sessions = function (SessionStore, session, config) {
+module.exports.sessions = function(options) {
     var authObject;
 
-    if (config.get('env') == 'production') {
-        var parsedUrl = url.parse(config.get('database.redis.url'));
+    if ('production' == options.env) {
+        var parsedUrl = url.parse(options.url);
+        
         authObject = {
-            prefix: config.get('database.redis.prefix'),
+            prefix: options.prefix,
             host: parsedUrl.hostname,
             port: parsedUrl.port,
-            db: config.get('database.redis.db'),
+            db: options.db,
             pass: parsedUrl.auth ? parsedUrl.auth.split(":")[1] : null,
-            secret: config.get('server.secret')
+            secret: options.secret
         };
 
-        return new SessionStore(authObject);
+        return new options.Store(authObject);
     } else {
-        return (new session.MemoryStore());
+        return (new options.session.MemoryStore());
     }
 };
 
@@ -176,8 +195,8 @@ module.exports.connectToDatabase = function(mongoose, url) {
 };
 
 // bind server to port
-module.exports.run = function(server, config) {
-    server.listen(config.get('server.port'), function() {
+module.exports.startServer = function(server, port) {
+    server.listen(port, function() {
         debug('listening on port %d'.green, server.address().port);
     });
 };
