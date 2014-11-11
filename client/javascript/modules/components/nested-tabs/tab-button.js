@@ -6,7 +6,7 @@
 var React = require('react');
 
 module.exports = React.createClass({
-    displayName: 'TabsButton',
+    displayName: 'NestedTabsNav',
 
     propTypes: {
         isActive: React.PropTypes.bool.isRequired,
@@ -22,9 +22,10 @@ module.exports = React.createClass({
     render: function() {
         return (
             <li className={this.props.isActive ? 'active' : ''}>
-                <a onClick={this.handleClick}>{this.props.title}</a>
+                <a onClick={this.handleClick}>
+                    {this.props.title}
+                </a>
             </li>
         );
     }
 });
-
