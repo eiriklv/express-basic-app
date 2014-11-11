@@ -1,0 +1,50 @@
+.tabbable-panel
+    border 1px solid #eee
+    padding 10px
+
+.tabbable-line
+    & > .nav-tabs
+        border none
+        margin 0px
+        & > li
+            margin-right 2px
+            & > a
+                border 0
+                margin-right 0
+                color #737373
+                & > i
+                    color #a6a6a6
+            &.active
+                border-bottom 4px solid #f3565d
+                position relative
+                & > a
+                    border 0
+                    color #333333
+                    & > i
+                        color #404040
+    & > .tab-content
+        margin-top -3px
+        background-color #fff
+        border 0
+        border-top 1px solid #eee
+        padding 15px 0
+
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover
+    border-bottom 4px solid #fbcdcf
+
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a
+    border 0
+    background none !important
+    color #333333
+
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i
+    color #a6a6a6
+
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu
+    margin-top 0px
+
+.portlet
+    .tabbable-line
+        & > .tab-content
+            padding-bottom 0
+

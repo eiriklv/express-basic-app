@@ -36,6 +36,7 @@ module.exports = React.createClass({
                 <link rel='stylesheet' href='//cdn.jsdelivr.net/alertify.js/0.3.11/themes/alertify.core.css' />
                 <link rel='stylesheet' href='//cdn.jsdelivr.net/alertify.js/0.3.11/themes/alertify.bootstrap.css' />
                 <link rel='stylesheet' href='/stylesheets/app.css' />
+                <link rel='stylesheet' href='/stylesheets/tabs.css' />
             </head>
         );
     }
