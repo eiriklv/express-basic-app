@@ -23,71 +23,71 @@ module.exports = React.createClass({
     mixins: [ReactAsync.Mixin],
 
     fetchContent: function(callback) {
-        /*
-        if (this.props.apiURL) {
-            superagent.get(this.props.apiURL, function(err, res) {
-                callback(err, res ? res.body : null);
-            });
+        if (!this.props.demo) {
+            if (this.props.apiURL) {
+                superagent.get(this.props.apiURL, function(err, res) {
+                    callback(err, res ? res.body : null);
+                });
+            } else {
+                callback(null, {
+                    activeTab: this.props.activeTab || 0,
+                    tabs: this.props.tabs || []
+                });
+            }
         } else {
             callback(null, {
-                activeTab: this.props.activeTab || 0,
-                tabs: this.props.tabs || []
+                activeTab: 0,
+                tabs: [{
+                    title: 'Tab1',
+                    sections: [{
+                        title: 'Section1-1',
+                        content: 'This is the first section of the first tab'
+                    }, {
+                        title: 'Section1-2',
+                        content: 'This is the second section of the first tab'
+                    }, {
+                        title: 'Section1-3',
+                        content: 'This is the third section of the first tab'
+                    }]
+                }, {
+                    title: 'Tab2',
+                    sections: [{
+                        title: 'Section2-1',
+                        content: 'This is the first section of the second tab'
+                    }, {
+                        title: 'Section2-2',
+                        content: 'This is the second section of the second tab'
+                    }, {
+                        title: 'Section2-3',
+                        content: 'This is the third section of the second tab'
+                    }]
+                }, {
+                    title: 'Tab3',
+                    sections: [{
+                        title: 'Section3-1',
+                        content: 'This is the first section of the third tab'
+                    }, {
+                        title: 'Section3-2',
+                        content: 'This is the second section of the third tab'
+                    }, {
+                        title: 'Section3-3',
+                        content: 'This is the third section of the third tab'
+                    }]
+                }, {
+                    title: 'Tab4',
+                    sections: [{
+                        title: 'Section4-1',
+                        content: 'This is the first section of the fourth tab'
+                    }, {
+                        title: 'Section4-2',
+                        content: 'This is the second section of the fourth tab'
+                    }, {
+                        title: 'Section4-3',
+                        content: 'This is the third section of the fourth tab'
+                    }]
+                }]
             });
         }
-        */
-
-        callback(null, {
-            activeTab: 0,
-            tabs: [{
-                title: 'Tab1',
-                sections: [{
-                    title: 'Section1-1',
-                    content: 'This is the first section of the first tab'
-                }, {
-                    title: 'Section1-2',
-                    content: 'This is the second section of the first tab'
-                }, {
-                    title: 'Section1-3',
-                    content: 'This is the third section of the first tab'
-                }]
-            }, {
-                title: 'Tab2',
-                sections: [{
-                    title: 'Section2-1',
-                    content: 'This is the first section of the second tab'
-                }, {
-                    title: 'Section2-2',
-                    content: 'This is the second section of the second tab'
-                }, {
-                    title: 'Section2-3',
-                    content: 'This is the third section of the second tab'
-                }]
-            }, {
-                title: 'Tab3',
-                sections: [{
-                    title: 'Section3-1',
-                    content: 'This is the first section of the third tab'
-                }, {
-                    title: 'Section3-2',
-                    content: 'This is the second section of the third tab'
-                }, {
-                    title: 'Section3-3',
-                    content: 'This is the third section of the third tab'
-                }]
-            }, {
-                title: 'Tab4',
-                sections: [{
-                    title: 'Section4-1',
-                    content: 'This is the first section of the fourth tab'
-                }, {
-                    title: 'Section4-2',
-                    content: 'This is the second section of the fourth tab'
-                }, {
-                    title: 'Section4-3',
-                    content: 'This is the third section of the fourth tab'
-                }]
-            }]
-        });
     },
 
     getInitialStateAsync: function(callback) {

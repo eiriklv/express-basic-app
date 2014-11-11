@@ -112,11 +112,11 @@ var App = React.createClass({
                             products={this.state.products}
                         />
 
-                        <HorizontalTabs apiURL={'http://localhost:3000/?'} />
+                        <HorizontalTabs demo={true} />
 
-                        <VerticalTabs apiURL={'http://localhost:3000/?'} />
+                        <VerticalTabs demo={true} />
                         
-                        <NestedTabs apiURL={'http://localhost:3000/?'} />
+                        <NestedTabs demo={true} />
                     </div>
 
                     <ExternalScripts />

@@ -23,35 +23,35 @@ module.exports = React.createClass({
     mixins: [ReactAsync.Mixin],
 
     fetchContent: function(callback) {
-        /*
-        if (this.props.apiURL) {
-            superagent.get(this.props.apiURL, function(err, res) {
-                callback(err, res ? res.body : null);
-            });
+        if (!this.props.demo) {
+            if (this.props.apiURL) {
+                superagent.get(this.props.apiURL, function(err, res) {
+                    callback(err, res ? res.body : null);
+                });
+            } else {
+                callback(null, {
+                    activeTab: this.props.activeTab || 0,
+                    tabs: this.props.tabs || []
+                });
+            }
         } else {
             callback(null, {
-                activeTab: this.props.activeTab || 0,
-                tabs: this.props.tabs || []
+                activeTab: 0,
+                tabs: [{
+                    title: 'Tab1',
+                    content: 'This is the first tab'
+                }, {
+                    title: 'Tab2',
+                    content: 'This is the second tab'
+                }, {
+                    title: 'Tab3',
+                    content: 'This is the third tab'
+                }, {
+                    title: 'Tab4',
+                    content: 'This is the fourth and last tab'
+                }]
             });
         }
-        */
-
-        callback(null, {
-            activeTab: 0,
-            tabs: [{
-                title: 'Tab1',
-                content: 'This is the first tab'
-            }, {
-                title: 'Tab2',
-                content: 'This is the second tab'
-            }, {
-                title: 'Tab3',
-                content: 'This is the third tab'
-            }, {
-                title: 'Tab4',
-                content: 'This is the fourth and last tab'
-            }]
-        });
     },
 
     getInitialStateAsync: function(callback) {
@@ -65,24 +65,26 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        return (
-            <div className="horizontal-tabs-panel">
-                <div className="horizontal-tabs-line">
+        return ( < div className = "horizontal-tabs-panel" >
+            < div className = "horizontal-tabs-line" >
 
-                    {/* tabs navigation */}
-                    <TabsNav
-                        tabs={this.state.tabs}
-                        activeTab={this.state.activeTab}
-                        onTabClick={this.onTabClick}
-                    />
+            { /* tabs navigation */ } < TabsNav tabs = {
+                this.state.tabs
+            }
+            activeTab = {
+                this.state.activeTab
+            }
+            onTabClick = {
+                this.onTabClick
+            }
+            />
 
-                    {/* active tab content */}
-                    <TabContent
-                        content={this.state.tabs[this.state.activeTab].content}
-                    />
+            { /* active tab content */ } < TabContent content = {
+                this.state.tabs[this.state.activeTab].content
+            }
+            />
 
-                </div>
-            </div>
+            < /div> < /div>
         );
     }
 });
