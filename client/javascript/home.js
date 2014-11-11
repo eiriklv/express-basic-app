@@ -23,6 +23,10 @@ var LikeButton = require('./modules/components/like-button');
 var Ticker = require('./modules/components/ticker');
 var Time = require('./modules/components/time');
 var FilterableProductTable = require('./modules/components/filterable-product-table');
+var HorizontalTabs = require('./modules/components/horizontal-tabs');
+var VerticalTabs = require('./modules/components/vertical-tabs');
+var NestedTabs = require('./modules/components/nested-tabs');
+
 
 // common components
 var Head = require('./modules/components/head');
@@ -107,6 +111,12 @@ var App = React.createClass({
                             title='Filterable Product Table'
                             products={this.state.products}
                         />
+
+                        <HorizontalTabs apiURL={'http://localhost:3000/?'} />
+
+                        <VerticalTabs apiURL={'http://localhost:3000/?'} />
+                        
+                        <NestedTabs apiURL={'http://localhost:3000/?'} />
                     </div>
 
                     <ExternalScripts />
