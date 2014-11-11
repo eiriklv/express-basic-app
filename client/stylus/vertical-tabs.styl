@@ -1,0 +1,42 @@
+.vertical-tabs-panel
+    border 1px solid #eee
+    margin-bottom 20px
+    padding 5px 10px 5px 0px
+
+.vertical-tabs-left, .vertical-tabs-right
+    border-bottom none
+    padding-top 2px
+
+.vertical-tabs-left
+    border-right 1px solid #ddd
+    & > li
+        margin-right -1px
+        & > a
+            border-radius 4px 0 0 4px
+            margin-right 0
+            display block
+
+.vertical-tabs-right
+    border-left 1px solid #ddd
+    & > li
+        margin-left -1px
+        & > a
+            border-radius 0 4px 4px 0
+            margin-right 0
+
+.vertical-tabs-left>li, .vertical-tabs-right>li
+    float none
+    margin-bottom 2px
+
+.vertical-tabs-left>li.active>a,
+.vertical-tabs-left>li.active>a:hover,
+.vertical-tabs-left>li.active>a:focus
+    border-bottom-color #ddd
+    border-right-color transparent
+
+.vertical-tabs-right>li.active>a,
+.vertical-tabs-right>li.active>a:hover,
+.vertical-tabs-right>li.active>a:focus
+    border-bottom 1px solid #ddd
+    border-left-color transparent
+

@@ -16,10 +16,11 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="tab-content">
-                <div className="tab-pane active">
-                    {/* inner tab content */}
-                    <p>{this.props.content}</p>
+            <div className="col-xs-9">
+                <div className="tab-content">
+                    <div className="tab-pane active">
+                        {this.props.content}
+                    </div>
                 </div>
             </div>
         );

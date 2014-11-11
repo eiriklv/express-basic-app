@@ -12,7 +12,7 @@ var TabsNav = require('./nav');
 var TabContent = require('./tab-content');
 
 module.exports = React.createClass({
-    displayName: 'Tabs',
+    displayName: 'VerticalTabs',
 
     propTypes: {
         activeTab: React.PropTypes.number,
@@ -23,6 +23,7 @@ module.exports = React.createClass({
     mixins: [ReactAsync.Mixin],
 
     fetchContent: function(callback) {
+        /*
         if (this.props.apiURL) {
             superagent.get(this.props.apiURL, function(err, res) {
                 callback(err, res ? res.body : null);
@@ -33,17 +34,24 @@ module.exports = React.createClass({
                 tabs: this.props.tabs || []
             });
         }
-
-        /* Example input schema for 'tabs'
-        [{
-            title: 'Tab1',
-            content: 'This is the first tab'
-        }, {
-            title: 'Tab2',
-            content: 'This is the second tab'
-        }...
-        ]
         */
+
+        callback(null, {
+            activeTab: 0,
+            tabs: [{
+                title: 'Tab1',
+                content: 'This is the first tab'
+            }, {
+                title: 'Tab2',
+                content: 'This is the second tab'
+            }, {
+                title: 'Tab3',
+                content: 'This is the third tab'
+            }, {
+                title: 'Tab4',
+                content: 'This is the fourth and last tab'
+            }]
+        });
     },
 
     getInitialStateAsync: function(callback) {
@@ -58,23 +66,21 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="tabbable-panel">
-                <div className="tabbable-line">
+            <div className="vertical-tabs-panel clearfix">
+                {/* tabs navigation */}
+                <TabsNav
+                    tabs={this.state.tabs}
+                    activeTab={this.state.activeTab}
+                    onTabClick={this.onTabClick}
+                />
 
-                    {/* tabs navigation */}
-                    <TabsNav
-                        tabs={this.state.tabs}
-                        activeTab={this.state.activeTab}
-                        onTabClick={this.onTabClick}
-                    />
-
-                    {/* active tab content */}
-                    <TabContent
-                        content={this.state.tabs[this.state.activeTab].content}
-                    />
-
-                </div>
+                {/* active tab content */}
+                <TabContent
+                    content={this.state.tabs[this.state.activeTab].content}
+                />
             </div>
+
+
         );
     }
 });

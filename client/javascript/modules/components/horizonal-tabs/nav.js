@@ -9,7 +9,7 @@ var React = require('react');
 var TabButton = require('./tab-button');
 
 module.exports = React.createClass({
-    displayName: 'TabsNav',
+    displayName: 'HorizontalTabsNav',
 
     propTypes: {
         activeTab: React.PropTypes.number.isRequired,

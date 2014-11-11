@@ -22,10 +22,9 @@ module.exports = React.createClass({
     render: function() {
         return (
             <li className={this.props.isActive ? 'active' : ''}>
-                <a href='#' onClick={this.handleClick}>
-                    {this.props.title}
-                </a>
+                <a onClick={this.handleClick}>{this.props.title}</a>
             </li>
         );
     }
 });
+
