@@ -38,6 +38,8 @@ module.exports = React.createClass({
                 <link rel='stylesheet' href='/stylesheets/app.css' />
                 <link rel='stylesheet' href='/stylesheets/horizontal-tabs.css' />
                 <link rel='stylesheet' href='/stylesheets/vertical-tabs.css' />
+                
+                <link href={'http://fonts.googleapis.com/css?family=Open+Sans:400,700,800&subset=latin,latin-ext'} rel='stylesheet' type='text/css' />
             </head>
         );
     }
