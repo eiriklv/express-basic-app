@@ -79,5 +79,5 @@ export SESSION_KEY="express.sid" \
 export MONGO_URL="mongodb://localhost/express-basic-app" \
 export REDIS_URL="redis://localhost:6379" \
 
-gulp
+gulp develop
 ```
