@@ -5,6 +5,7 @@ var colors = require('colors');
 var util = require('util');
 var debug = require('debug')('express-basic-app:setup');
 var helpers = require('helpers');
+var _ = require('highland');
 
 // express dependencies
 var express = require('express');
@@ -114,7 +115,7 @@ module.exports.handleExpressError = function(app) {
 
         // respond with html page
         if (req.accepts('html')) {
-            return helpers.react.renderMarkupToString({
+            return _([{ 
                 component: notFoundPage,
                 clientScripts: ['/javascript/404.js'],
                 context: {
@@ -123,19 +124,21 @@ module.exports.handleExpressError = function(app) {
                     descriptions: ''
                 },
                 staticPage: false,
-                callback: function(err, markup) {
-                    if (err) return next(err);
-                    res.send(markup);
-                }
+            }])
+            .map(_.wrapCallback(helpers.react.renderMarkupToString)).series()
+            .errors(function(err) {
+                next(err);
+            })
+            .each(function(markup) {
+                res.status(200).send(markup);
             });
         }
 
         // respond with json
         if (req.accepts('json')) {
-            res.send({
+            return res.send({
                 error: 'Not found'
             });
-            return;
         }
 
         // default to plain-text. send()

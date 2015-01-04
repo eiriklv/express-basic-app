@@ -1,23 +1,25 @@
 var nodejsx = require('node-jsx').install();
 var Landing = require('client/landing');
 var helpers = require('helpers');
+var _ = require('highland');
 
 exports = module.exports = function(services) {
-    return function(req, res, next) {
-        var context = {
-            title: 'Landing',
-            description: 'App landing',
-        };
+    var context = {
+        title: 'Landing',
+        description: 'App landing',
+    };
 
-        helpers.react.renderMarkupToString({
+    return function(req, res, next) {
+        var data = _([{
             component: Landing,
             clientScripts: ['/javascript/landing.js'],
             context: context,
-            staticPage: true,
-            callback: function(err, markup) {
-                if (err) return next(err);
-                res.send(markup);
-            }
-        });
+            staticPage: true
+        }]);
+
+        data
+            .map(_.wrapCallback(helpers.react.renderMarkupToString)).series()
+            .errors(next.bind(next))
+            .each(res.send.bind(res));
     };
 };

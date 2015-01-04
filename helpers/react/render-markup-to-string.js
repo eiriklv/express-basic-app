@@ -2,9 +2,9 @@ var ReactAsync = require('react-async');
 var debug = require('debug')('react-markup');
 var util = require('util');
 
-exports = module.exports = function(options) {
+exports = module.exports = function(options, callback) {
   var context = options.context || {};
-  var callback = options.callback || function(err) {
+  var callback = callback || function(err) {
     console.log(err);
   };
   var clientScripts = options.clientScripts || [];
