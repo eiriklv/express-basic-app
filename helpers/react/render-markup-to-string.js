@@ -5,11 +5,11 @@ var util = require('util');
 exports = module.exports = function(options, callback) {
   var context = options.context || {};
   var callback = callback || function(err) {
-    console.log(err);
+    debug(err);
   };
   var clientScripts = options.clientScripts || [];
   var component = options.component || function() {
-    console.log('no component passed!');
+    debug('no component passed!');
   };
 
   // application data (this has the same effect as handlebars context, except for react components)
