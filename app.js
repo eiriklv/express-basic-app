@@ -9,8 +9,8 @@ var socketio = require('socket.io')();
 var socketHandshake = require('socket.io-handshake');
 
 // config and setup helpers
-var helpers = require('./helpers')();
-var config = require('./config');
+var helpers = require('helpers');
+var config = require('config');
 var setup = require('./setup');
 
 // setup session store
@@ -48,20 +48,20 @@ setup.configureSockets(io, {
 });
 
 // app modules
-var ipc = require('./modules/ipc')(0);
+var ipc = require('modules/ipc')(0);
 var models = require('./models')(mongoose);
-var services = require('./services')(models, helpers);
+var services = require('./services')(models);
 var middleware = require('./middleware')();
-var handlers = require('./handlers')(services, helpers);
+var handlers = require('./handlers')(services);
 
 // initialize sockets
-require('./modules/sockets')(io, ipc);
+require('modules/sockets')(io, ipc);
 
 // initialize routes
-require('./routes')(app, middleware, handlers, config);
+require('./routes')(app, middleware, handlers);
 
 // express error handling
-setup.handleExpressError(app, helpers);
+setup.handleExpressError(app);
 
 // database connection
 setup.connectToDatabase(mongoose, config.get('database.mongo.url'));

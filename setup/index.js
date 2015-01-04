@@ -4,6 +4,7 @@ var url = require('url');
 var colors = require('colors');
 var util = require('util');
 var debug = require('debug')('express-basic-app:setup');
+var helpers = require('helpers');
 
 // express dependencies
 var express = require('express');
@@ -17,7 +18,7 @@ var errorHandler = require('errorhandler');
 
 // 404 / error handling dependencies
 var nodejsx = require('node-jsx').install();
-var notFoundPage = require('../client/javascript/404');
+var notFoundPage = require('client/404');
 
 // socket.io dependecies
 var socketHandshake = require('socket.io-handshake');
@@ -106,14 +107,14 @@ module.exports.sessions = function(options) {
 };
 
 // handle express errors
-module.exports.handleExpressError = function(app, helpers) {
+module.exports.handleExpressError = function(app) {
     // handle 404 not found
     app.use(function(req, res, next) {
         res.status(404);
 
         // respond with html page
         if (req.accepts('html')) {
-            helpers.react.renderMarkupToString({
+            return helpers.react.renderMarkupToString({
                 component: notFoundPage,
                 clientScripts: ['/javascript/404.js'],
                 context: {
@@ -127,7 +128,6 @@ module.exports.handleExpressError = function(app, helpers) {
                     res.send(markup);
                 }
             });
-            return;
         }
 
         // respond with json

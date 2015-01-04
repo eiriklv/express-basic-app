@@ -1,7 +1,8 @@
 var nodejsx = require('node-jsx').install();
-var Landing = require('../../../client/javascript/landing');
+var Landing = require('client/landing');
+var helpers = require('helpers');
 
-exports = module.exports = function(services, helpers) {
+exports = module.exports = function(services) {
     return function(req, res, next) {
         var context = {
             title: 'Landing',

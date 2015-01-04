@@ -1,7 +1,8 @@
 var nodejsx = require('node-jsx').install();
-var App = require('../../../client/javascript/home');
+var App = require('client/home');
+var helpers = require('helpers');
 
-exports = module.exports = function(services, helpers) {
+exports = module.exports = function(services) {
     return function(req, res, next) {
         var context = {
             title: 'React demo',

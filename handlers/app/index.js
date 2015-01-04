@@ -1,6 +1,6 @@
-exports = module.exports = function(services, helpers) {
+exports = module.exports = function(services) {
     return {
-        landing: require('./landing')(services, helpers),
-        home: require('./home')(services, helpers)
+        landing: require('./landing')(services),
+        home: require('./home')(services)
     };
 };

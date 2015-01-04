@@ -4,34 +4,34 @@
 'use strict';
 
 // config
-var config = require('./config');
-var api = require('./modules/api')(config);
+var config = require('client/config');
+var api = require('client/modules/api')(config);
 
 // dependencies
 var React = require('react');
 var ReactAsync = require('react-async');
 var superagent = require('superagent');
 var io = require('socket.io-client');
-var sockets = require('./modules/sockets/home');
+var sockets = require('client/modules/sockets/home');
 
 // custom components
-var TodoApp = require('./modules/components/todo-app');
-var CommentBox = require('./modules/components/comment-box');
-var Avatar = require('./modules/components/avatar');
-var Counter = require('./modules/components/counter');
-var LikeButton = require('./modules/components/like-button');
-var Ticker = require('./modules/components/ticker');
-var Time = require('./modules/components/time');
-var FilterableProductTable = require('./modules/components/filterable-product-table');
-var HorizontalTabs = require('./modules/components/horizontal-tabs');
-var VerticalTabs = require('./modules/components/vertical-tabs');
-var NestedTabs = require('./modules/components/nested-tabs');
+var TodoApp = require('client/modules/components/todo-app');
+var CommentBox = require('client/modules/components/comment-box');
+var Avatar = require('client/modules/components/avatar');
+var Counter = require('client/modules/components/counter');
+var LikeButton = require('client/modules/components/like-button');
+var Ticker = require('client/modules/components/ticker');
+var Time = require('client/modules/components/time');
+var FilterableProductTable = require('client/modules/components/filterable-product-table');
+var HorizontalTabs = require('client/modules/components/horizontal-tabs');
+var VerticalTabs = require('client/modules/components/vertical-tabs');
+var NestedTabs = require('client/modules/components/nested-tabs');
 
 
 // common components
-var Head = require('./modules/components/head');
-var Header = require('./modules/components/header');
-var ExternalScripts = require('./modules/components/external-scripts');
+var Head = require('client/modules/components/head');
+var Header = require('client/modules/components/header');
+var ExternalScripts = require('client/modules/components/external-scripts');
 
 // Main page component (this is asyncronous)
 var App = React.createClass({
@@ -132,7 +132,7 @@ module.exports = App;
 if (typeof window !== 'undefined') {
     // enable the react developer tools when developing (loads another 450k into the DOM..)
     if (config.environment == 'development') {
-        window.React = require('react');
+        window.React = require('react')
     }
 
     window.onload = function() {

@@ -4,14 +4,14 @@
 'use strict';
 
 // config
-var config = require('./config');
+var config = require('client/config');
 
 // dependencies
 var React = require('react');
 var ReactAsync = require('react-async');
 
 // custom components
-var Head = require('./modules/components/head');
+var Head = require('client/modules/components/head');
 
 // Main page component (this is asyncronous)
 var NotFound = React.createClass({
