@@ -29,6 +29,7 @@ build/Release
 
 # node_modules
 node_modules/*
+!node_modules/config
 !node_modules/modules
 !node_modules/helpers
 !node_modules/client

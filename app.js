@@ -6,7 +6,6 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
 var socketio = require('socket.io')();
-var socketHandshake = require('socket.io-handshake');
 
 // config and setup helpers
 var helpers = require('helpers');
