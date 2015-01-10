@@ -125,7 +125,7 @@ module.exports.handleExpressError = function(app) {
                 },
                 staticPage: false,
             }])
-            .map(_.wrapCallback(helpers.react.renderMarkupToString)).series()
+            .flatMap(_.wrapCallback(helpers.react.renderMarkupToString))
             .errors(function(err) {
                 next(err);
             })
